@@ -11,8 +11,10 @@ export class ListarClienteComponent implements OnInit {
 
   listCliente: Cliente[] = [];
 
-  constructor(private _clienteService: ClienteService) { }
 
+
+  constructor(private _clienteService: ClienteService) { }
+  
   ngOnInit(): void {
     this.obtenerClientes();
   }
@@ -23,6 +25,14 @@ export class ListarClienteComponent implements OnInit {
       this.listCliente = data;
     },error =>{
       console.log(error);
+    })
+  }
+
+  eliminarCliente(id:any){
+    this._clienteService.eliminarClientes(id).subscribe(data=>{
+      this.obtenerClientes();
+    }, error => {
+      console.log(error)
     })
   }
 
