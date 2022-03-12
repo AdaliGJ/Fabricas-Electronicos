@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
 
@@ -12,10 +12,13 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class CrearClienteComponent implements OnInit {
 
   clienteForm: FormGroup;
+  titulo = 'Crear Producto';
+  id: string | null;
 
   constructor(private fb: FormBuilder,
     private router:Router,
-    private _clienteService: ClienteService) {
+    private _clienteService: ClienteService,
+    private aRouter: ActivatedRoute) {
     this.clienteForm = this.fb.group({
       empresa: ['', Validators.required],
       encargado: ['', Validators.required],
@@ -23,9 +26,11 @@ export class CrearClienteComponent implements OnInit {
       telefono: ['', Validators.required],
       pais: ['', Validators.required],
     })
+    this.id = this.aRouter.snapshot.paramMap.get('id');
    }
 
   ngOnInit(): void {
+    this.esEditar();
   }
 
   agregarCliente(){
@@ -40,15 +45,38 @@ export class CrearClienteComponent implements OnInit {
       pais: this.clienteForm.get('pais')?.value
     }
 
-    console.log(CLIENTE);
+    if(this.id !== null){
+      this._clienteService.editarCliente(this.id, CLIENTE).subscribe(data=>{
+        this.router.navigate(['/']);
+      }, error =>{
+        console.log(error);
+        this.clienteForm.reset();
+    })
+    }else{
+      console.log(CLIENTE);
 
-    this._clienteService.nuevoCliente(CLIENTE).subscribe(data => {
+      this._clienteService.nuevoCliente(CLIENTE).subscribe(data => {
       this.router.navigate(['/']);
     }, error =>{
-      console.log(error);
-      this.clienteForm.reset();
+        console.log(error);
+        this.clienteForm.reset();
     })
-    this.router.navigate(['/']);
+    }
+
   }
 
+    esEditar(){
+      if(this.id !== null){
+        this.titulo = 'Editar Cliente';
+        this._clienteService.obtenerCliente(this.id).subscribe(data=>{
+          this.clienteForm.setValue({
+            empresa: data.empresa,
+            encargado: data.encargado,
+            correo: data.correo,
+            telefono: data.telefono,
+            pais: data.pais,
+          })
+        })
+      }
+    }
 }

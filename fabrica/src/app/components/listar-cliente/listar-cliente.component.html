@@ -26,7 +26,7 @@
                             <td>{{cliente.telefono}}</td>
                             <td>{{cliente.pais}}</td>
                             <td>
-                                <button class="btn btn-success">E</button>
+                                <button [routerLink] ="['/editar-cliente', cliente._id]" class="btn btn-success">E</button>
                                 <button (click) ="eliminarCliente(cliente._id)" class="btn btn-danger">D</button>
                             </td>
                           </tr>

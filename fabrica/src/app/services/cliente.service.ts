@@ -22,4 +22,10 @@ export class ClienteService {
   nuevoCliente(cliente: Cliente): Observable<any>{
     return this.http.post(this.url, cliente);
   }
+  obtenerCliente(id: string): Observable<any>{
+    return this.http.get(this.url + id);
+  }
+  editarCliente(id:string, cliente: Cliente): Observable<any>{
+    return this.http.put(this.url + id, cliente);
+  }
 }
