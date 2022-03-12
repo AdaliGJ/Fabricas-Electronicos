@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -13,7 +14,8 @@ export class CrearClienteComponent implements OnInit {
   clienteForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-    private router:Router) {
+    private router:Router,
+    private _clienteService: ClienteService) {
     this.clienteForm = this.fb.group({
       empresa: ['', Validators.required],
       encargado: ['', Validators.required],
@@ -39,6 +41,13 @@ export class CrearClienteComponent implements OnInit {
     }
 
     console.log(CLIENTE);
+
+    this._clienteService.nuevoCliente(CLIENTE).subscribe(data => {
+      this.router.navigate(['/']);
+    }, error =>{
+      console.log(error);
+      this.clienteForm.reset();
+    })
     this.router.navigate(['/']);
   }
 

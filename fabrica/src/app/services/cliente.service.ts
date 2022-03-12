@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Cliente } from '../models/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,8 @@ export class ClienteService {
 
   eliminarClientes(id: string): Observable<any>{
     return this.http.delete(this.url + id);
+  }
+  nuevoCliente(cliente: Cliente): Observable<any>{
+    return this.http.post(this.url, cliente);
   }
 }
