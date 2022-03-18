@@ -47,7 +47,7 @@ export class CrearClienteComponent implements OnInit {
 
     if(this.id !== null){
       this._clienteService.editarCliente(this.id, CLIENTE).subscribe(data=>{
-        this.router.navigate(['/']);
+        this.router.navigate(['/'])
       }, error =>{
         console.log(error);
         this.clienteForm.reset();

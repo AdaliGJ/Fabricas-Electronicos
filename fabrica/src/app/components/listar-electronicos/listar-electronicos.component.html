@@ -1,0 +1,43 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span>Electronicos</span>
+                    <button class="btn btn-success float-end" routerLink="/crear-electronico">Nuevo</button>
+                    <table *ngIf = "listCliente.length > 0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">idInventario</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Existencias</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Descripcion</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let electronico of listCliente">
+                            <th scope="row">1</th>
+                            <td>{{electronico.idInventario}}</td>
+                            <td>{{electronico.marca}}</td>
+                            <td>{{electronico.existencias}}</td>
+                            <td>{{electronico.precio}}</td>
+                            <td>{{electronico.color}}</td>
+                            <td>{{electronico.modelo}}</td>
+                            <td>{{electronico.descripcion}}</td>
+                            <td>
+                                <button [routerLink] ="['/editar-electronico', electronico._id]" class="btn btn-success">E</button>
+                                <button (click) ="eliminarCliente(electronico._id)" class="btn btn-danger">D</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5 *ngIf = "listCliente.length == 0">No hay electronicos</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
