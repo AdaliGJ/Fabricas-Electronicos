@@ -1,29 +1,59 @@
+import { NumberSymbol } from "@angular/common";
+
 export class Electronico{
     _id? : number;
 	idInventario : number;
+    categoria: string;
 	marca : string;
-	existencias: number;
+	existencia: number;
 	precio: number;
 	color : number;
 	modelo : string;
     descripcion : string;
+    resolucion: string;
+    bits: number;
+    pulgadas: number;
+    hdmi: number;
+    pulgadasReloj: number;
+    sistemaOperativo: string;
+    ram: number;
+    memoria: number;
 
     constructor(
         idInventario : number,
+        categoria: string,
         marca : string,
-        existencias: number,
+        existencia: number,
         precio: number,
         color : number,
         modelo : string,
-        descripcion: string)
+        descripcion: string,
+        resolucion: string,
+        bits: number,
+        pulgadas: number,
+        hdmi: number,
+        pulgadasReloj: number,
+        sistemaOperativo: string,
+        ram: number,
+        memoria: number
+        )
         {
         this.idInventario = idInventario;
+        this.categoria = categoria;
         this.marca = marca;
-        this.existencias = existencias;
+        this.existencia = existencia;
         this.precio = precio;
         this.color = color;
         this.modelo = modelo;
         this.descripcion = descripcion;
+        this.resolucion = resolucion;
+        this.bits = bits;
+        this.pulgadas = pulgadas;
+        this.hdmi = hdmi;
+        this.pulgadasReloj = pulgadasReloj;
+        this.sistemaOperativo = sistemaOperativo;
+        this.ram = ram;
+        this.memoria = memoria; 
     }
 
 }

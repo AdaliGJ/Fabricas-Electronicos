@@ -9,7 +9,7 @@ import { ElectronicoService } from 'src/app/services/electronico.service';
 })
 export class ListarElectronicosComponent implements OnInit {
 
-  listCliente: Electronico[] = [];
+  listElectronico: Electronico[] = [];
 
 
 
@@ -22,13 +22,13 @@ export class ListarElectronicosComponent implements OnInit {
   obtenerElectronicos(){
     this._electronicoService.getElectronicos().subscribe(data=>{
       console.log(data);
-      this.listCliente = data;
+      this.listElectronico = data;
     },error =>{
       console.log(error);
     })
   }
 
-  eliminarCliente(id:any){
+  eliminarElectronico(id:any){
     this._electronicoService.eliminarElectronicos(id).subscribe(data=>{
       this.obtenerElectronicos();
     }, error => {

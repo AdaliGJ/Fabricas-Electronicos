@@ -19,13 +19,13 @@ export class ElectronicoService {
   eliminarElectronicos(id: string): Observable<any>{
     return this.http.delete(this.url + id);
   }
-  nuevoElectronico(cliente: Electronico): Observable<any>{
-    return this.http.post(this.url, cliente);
+  nuevoElectronico(electronico: Electronico): Observable<any>{
+    return this.http.post(this.url, electronico);
   }
   obtenerElectronico(id: string): Observable<any>{
     return this.http.get(this.url + id);
   }
-  editarElectronico(id:string, cliente: Electronico): Observable<any>{
-    return this.http.put(this.url + id, cliente);
+  editarElectronico(id:string, electronico: Electronico): Observable<any>{
+    return this.http.put(this.url + id, electronico);
   }
 }

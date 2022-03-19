@@ -9,13 +9,15 @@ import { ListarClienteComponent } from './components/listar-cliente/listar-clien
 
 import {HttpClientModule} from '@angular/common/http';
 import { ListarElectronicosComponent } from './components/listar-electronicos/listar-electronicos.component';
+import { CrearElectronicoComponent } from './components/crear-electronico/crear-electronico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CrearClienteComponent,
     ListarClienteComponent,
-    ListarElectronicosComponent
+    ListarElectronicosComponent,
+    CrearElectronicoComponent
   ],
   imports: [
     BrowserModule,

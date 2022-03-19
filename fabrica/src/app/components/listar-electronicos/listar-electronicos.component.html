@@ -5,7 +5,7 @@
                 <div class="card-body text-center">
                     <span>Electronicos</span>
                     <button class="btn btn-success float-end" routerLink="/crear-electronico">Nuevo</button>
-                    <table *ngIf = "listCliente.length > 0" class="table table-striped mt-3">
+                    <table  class="table table-striped mt-3">
                         <thead>
                           <tr>
                             <th scope="col">idInventario</th>
@@ -19,23 +19,24 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let electronico of listCliente">
+                          <tr *ngFor="let electronico of listElectronico">
                             <th scope="row">1</th>
-                            <td>{{electronico.idInventario}}</td>
+                          
+                            <td>{{electronico.categoria}}</td>
                             <td>{{electronico.marca}}</td>
-                            <td>{{electronico.existencias}}</td>
+                            <td>{{electronico.existencia}}</td>
                             <td>{{electronico.precio}}</td>
                             <td>{{electronico.color}}</td>
                             <td>{{electronico.modelo}}</td>
                             <td>{{electronico.descripcion}}</td>
                             <td>
                                 <button [routerLink] ="['/editar-electronico', electronico._id]" class="btn btn-success">E</button>
-                                <button (click) ="eliminarCliente(electronico._id)" class="btn btn-danger">D</button>
+                                <button (click) ="eliminarElectronico(electronico._id)" class="btn btn-danger">D</button>
                             </td>
                           </tr>
                         </tbody>
                       </table>
-                      <h5 *ngIf = "listCliente.length == 0">No hay electronicos</h5>
+                     <!-- <h5 *ngIf = "listElectronico.length == 0">No hay electronicos</h5> -->
                 </div>
             </div>
         </div>
