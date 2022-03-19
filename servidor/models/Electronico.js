@@ -10,7 +10,7 @@ const ElectronicoSchema = mongoose.Schema({
         required: true
     },
     marca:{
-        type: Number,
+        type: String,
         required: true
     },
     existencia:{

@@ -5,13 +5,15 @@ const cors = require('cors');
 //Creaicon servidor
 const app = express();
 
+
 //Conectamos a la BD
 conectarDB();
 
 app.use(cors());
 
 app.use(express.json());
-app.use('/api/cliente', require('./routes/cliente'));
+app.use('/api/electronico', require('./routes/electronico'));
+
 
 
 app.listen(4000,()=>{
