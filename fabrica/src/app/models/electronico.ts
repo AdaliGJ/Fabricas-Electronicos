@@ -18,6 +18,9 @@ export class Electronico{
     sistemaOperativo: string;
     ram: number;
     memoria: number;
+    maximoJugadores: number;
+    graficos: string;
+    consola: string;
 
     constructor(
         idInventario : number,
@@ -35,7 +38,10 @@ export class Electronico{
         pulgadasReloj: number,
         sistemaOperativo: string,
         ram: number,
-        memoria: number
+        memoria: number,
+        maximoJugadores: number,
+        graficos: string,
+        consola: string
         )
         {
         this.idInventario = idInventario;
@@ -54,6 +60,9 @@ export class Electronico{
         this.sistemaOperativo = sistemaOperativo;
         this.ram = ram;
         this.memoria = memoria; 
+        this.maximoJugadores = maximoJugadores;
+        this.graficos = graficos;
+        this.consola = consola;
     }
 
 }

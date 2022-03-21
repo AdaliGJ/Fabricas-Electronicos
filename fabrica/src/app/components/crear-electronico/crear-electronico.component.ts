@@ -28,7 +28,18 @@ export class CrearElectronicoComponent implements OnInit {
       precio: ['', Validators.required],
       color: ['', Validators.required],
       modelo: ['', Validators.required],
-      descripcion: ['', Validators.required]
+      descripcion: ['', Validators.required],
+      resolucion: ['', Validators.required],
+      bits: ['', Validators.required],
+      pulgadas: ['', Validators.required],
+      hdmi: ['', Validators.required],
+      pulgadasReloj: ['', Validators.required],
+      sistemaOperativo: ['', Validators.required],
+      ram: ['', Validators.required],
+      memoria: ['', Validators.required],
+      maximoJugadores: ['', Validators.required],
+      graficos: ['', Validators.required],
+      consola: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
     this.tipoElectronico = 0;
@@ -58,6 +69,9 @@ export class CrearElectronicoComponent implements OnInit {
       sistemaOperativo: this.electronicoForm.get('sistemaOperativo')?.value,
       ram: this.electronicoForm.get('ram')?.value,
       memoria: this.electronicoForm.get('memoria')?.value,
+      maximoJugadores: this.electronicoForm.get('maximoJugadores')?.value,
+      graficos: this.electronicoForm.get('graficos')?.value,
+      consola: this.electronicoForm.get('consola')?.value,
     }
 
     if(this.id !== null){

@@ -43,7 +43,7 @@
 
                         <!--Opciones para los smartwatch-->
                         <div class="mb-2" *ngIf="this.tipoElectronico==2">
-                            <input type="text" formControlName="pulgadasRelos" class="form-control form-control-sm"  placeholder="Pulgadas Pantalla">
+                            <input type="text" formControlName="pulgadasReloj" class="form-control form-control-sm"  placeholder="Pulgadas Pantalla">
                             
                         </div>
 
@@ -121,7 +121,7 @@
                         </div>
                         <div class="mb-3">
                             <button routerLink="/lista-electronicos" class="btn btn-secondary btn-lg float-start">Regresar</button>
-                            <button type="submit" [disabled]="electronicoForm.invalid" class="btn btn-success btn-lg float-end">Aceptar</button>
+                            <button type="submit" class="btn btn-success btn-lg float-end">Aceptar</button>
                         </div>
                         
                     </form>
