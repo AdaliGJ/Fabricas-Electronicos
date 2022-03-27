@@ -21,11 +21,11 @@ export class ListarElectronicosComponent implements OnInit {
 
   obtenerElectronicos(){
     this._electronicoService.getElectronicos().subscribe(data=>{
-      console.log(data);
       this.listElectronico = data;
     },error =>{
       console.log(error);
     })
+    
   }
 
   eliminarElectronico(id:any){

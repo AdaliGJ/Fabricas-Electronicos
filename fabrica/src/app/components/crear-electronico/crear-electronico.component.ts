@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Electronico } from 'src/app/models/electronico';
+import { ElectronicoTelevisor } from 'src/app/models/electronicoTelevisor';
+import { ElectronicoSmartWatch } from 'src/app/models/electronicoSmartWatch';
+import { ElectronicoVideoGame } from 'src/app/models/electronicoVideoGame';
 import { ElectronicoService } from 'src/app/services/electronico.service';
 
 
@@ -73,6 +76,52 @@ export class CrearElectronicoComponent implements OnInit {
       graficos: this.electronicoForm.get('graficos')?.value,
       consola: this.electronicoForm.get('consola')?.value,
     }
+    const ELECTRONICOtelevisor: ElectronicoTelevisor ={
+      idInventario: 0,
+      categoria: this.electronicoForm.get('categoria')?.value,
+      marca: this.electronicoForm.get('marca')?.value,
+      existencia: this.electronicoForm.get('existencia')?.value,
+      precio: this.electronicoForm.get('precio')?.value,
+      color: this.electronicoForm.get('color')?.value,
+      modelo: this.electronicoForm.get('modelo')?.value,
+      descripcion: this.electronicoForm.get('descripcion')?.value,
+      resolucion: this.electronicoForm.get('resolicion')?.value,
+      bits: this.electronicoForm.get('bits')?.value,
+      pulgadas: this.electronicoForm.get('pulgadas')?.value,
+      hdmi: this.electronicoForm.get('hdmi')?.value,
+    }
+
+    const ELECTRONICOsmartWatch: ElectronicoSmartWatch ={
+      idInventario: 0,
+      categoria: this.electronicoForm.get('categoria')?.value,
+      marca: this.electronicoForm.get('marca')?.value,
+      existencia: this.electronicoForm.get('existencia')?.value,
+      precio: this.electronicoForm.get('precio')?.value,
+      color: this.electronicoForm.get('color')?.value,
+      modelo: this.electronicoForm.get('modelo')?.value,
+      descripcion: this.electronicoForm.get('descripcion')?.value,
+      pulgadasReloj: this.electronicoForm.get('pulgadasReloj')?.value,
+      sistemaOperativo: this.electronicoForm.get('sistemaOperativo')?.value,
+      ram: this.electronicoForm.get('ram')?.value,
+      memoria: this.electronicoForm.get('memoria')?.value,
+    }
+
+    const ELECTRONICOVideoGame: ElectronicoVideoGame ={
+      idInventario: 0,
+      categoria: this.electronicoForm.get('categoria')?.value,
+      marca: this.electronicoForm.get('marca')?.value,
+      existencia: this.electronicoForm.get('existencia')?.value,
+      precio: this.electronicoForm.get('precio')?.value,
+      color: this.electronicoForm.get('color')?.value,
+      modelo: this.electronicoForm.get('modelo')?.value,
+      descripcion: this.electronicoForm.get('descripcion')?.value,
+      maximoJugadores: this.electronicoForm.get('maximoJugadores')?.value,
+      graficos: this.electronicoForm.get('graficos')?.value,
+      consola: this.electronicoForm.get('consola')?.value,
+      
+    }
+
+    
 
     if(this.id !== null){
       this._electronicoService.editarElectronico(this.id, ELECTRONICO).subscribe(data=>{
@@ -82,14 +131,32 @@ export class CrearElectronicoComponent implements OnInit {
         this.electronicoForm.reset();
     })
     }else{
-      console.log(ELECTRONICO);
-
-      this._electronicoService.nuevoElectronico(ELECTRONICO).subscribe(data => {
-      this.router.navigate(['/']);
-    }, error =>{
-        console.log(error);
-        this.electronicoForm.reset();
-    })
+      if(this.tipoElectronico == 1){
+        this._electronicoService.nuevoElectronicoTelevisor(ELECTRONICOtelevisor).subscribe(data => {
+          this.router.navigate(['/']);
+        }, error =>{
+            console.log(error);
+            this.electronicoForm.reset();
+        })
+      }
+      else if(this.tipoElectronico == 2){
+        this._electronicoService.nuevoElectronicoSmartWatch(ELECTRONICOsmartWatch).subscribe(data => {
+          this.router.navigate(['/']);
+        }, error =>{
+            console.log(error);
+            this.electronicoForm.reset();
+        })
+      }
+      else if(this.tipoElectronico == 3){
+        this._electronicoService.nuevoElectronicoVideoGame(ELECTRONICOVideoGame).subscribe(data => {
+          this.router.navigate(['/']);
+        }, error =>{
+            console.log(error);
+            this.electronicoForm.reset();
+        })
+      }
+      
+      
     }
 
   }
