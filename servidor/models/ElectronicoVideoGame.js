@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ElectronicoSchema = mongoose.Schema({
+const ElectronicoVideoGameSchema = mongoose.Schema({
     idInventario:{
         type: Number,
         required: true
@@ -33,38 +33,6 @@ const ElectronicoSchema = mongoose.Schema({
         type: String,
         default: Date.now()
     },
-    resolucion: {
-        type: String,
-        default: Date.now()
-    },
-    bits: {
-        type: String,
-        default: Date.now()
-    },
-    pulgadas: {
-        type: String,
-        default: Date.now()
-    },
-    hdmi: {
-        type: String,
-        default: Date.now()
-    },
-    pulgadasReloj: {
-        type: String,
-        default: Date.now()
-    },
-    sistemaOperativo: {
-        type: String,
-        default: Date.now()
-    },
-    ram: {
-        type: String,
-        default: Date.now()
-    },
-    memoria: {
-        type: String,
-        default: Date.now()
-    },
     maximoJugadores: {
         type: String,
         default: Date.now()
@@ -78,4 +46,4 @@ const ElectronicoSchema = mongoose.Schema({
         default: Date.now()
     }
 })
-module.exports = mongoose.model('Electronicoz', ElectronicoSchema);
+module.exports = mongoose.model('Electronicoss', ElectronicoVideoGameSchema);

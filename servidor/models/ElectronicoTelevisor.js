@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ElectronicoSchema = mongoose.Schema({
+const ElectronicoTelevisorSchema = mongoose.Schema({
     idInventario:{
         type: Number,
         required: true
@@ -48,34 +48,6 @@ const ElectronicoSchema = mongoose.Schema({
     hdmi: {
         type: String,
         default: Date.now()
-    },
-    pulgadasReloj: {
-        type: String,
-        default: Date.now()
-    },
-    sistemaOperativo: {
-        type: String,
-        default: Date.now()
-    },
-    ram: {
-        type: String,
-        default: Date.now()
-    },
-    memoria: {
-        type: String,
-        default: Date.now()
-    },
-    maximoJugadores: {
-        type: String,
-        default: Date.now()
-    },
-    graficos: {
-        type: String,
-        default: Date.now()
-    },
-    consola: {
-        type: String,
-        default: Date.now()
     }
 })
-module.exports = mongoose.model('Electronicoz', ElectronicoSchema);
+module.exports = mongoose.model('electronicos', ElectronicoTelevisorSchema);

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ElectronicoSchema = mongoose.Schema({
+const ElectronicoSmartWatchSchema = mongoose.Schema({
     idInventario:{
         type: Number,
         required: true
@@ -33,22 +33,6 @@ const ElectronicoSchema = mongoose.Schema({
         type: String,
         default: Date.now()
     },
-    resolucion: {
-        type: String,
-        default: Date.now()
-    },
-    bits: {
-        type: String,
-        default: Date.now()
-    },
-    pulgadas: {
-        type: String,
-        default: Date.now()
-    },
-    hdmi: {
-        type: String,
-        default: Date.now()
-    },
     pulgadasReloj: {
         type: String,
         default: Date.now()
@@ -64,18 +48,6 @@ const ElectronicoSchema = mongoose.Schema({
     memoria: {
         type: String,
         default: Date.now()
-    },
-    maximoJugadores: {
-        type: String,
-        default: Date.now()
-    },
-    graficos: {
-        type: String,
-        default: Date.now()
-    },
-    consola: {
-        type: String,
-        default: Date.now()
     }
 })
-module.exports = mongoose.model('Electronicoz', ElectronicoSchema);
+module.exports = mongoose.model('Electronicosssss', ElectronicoSmartWatchSchema);

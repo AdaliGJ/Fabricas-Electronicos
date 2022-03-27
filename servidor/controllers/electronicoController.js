@@ -1,9 +1,12 @@
 const Electronico = require("../models/Electronico");
 
+const ElectronicoTelevisor = require("../models/ElectronicoTelevisor");
+const ElectronicoSmartWatch = require("../models/ElectronicoSmartWatch");
+const ElectronicoVideoGame = require("../models/ElectronicoVideoGame");
+
 exports.crearElectronico = async (req, res) => {
     try{
         let electronico;
-
         //Creamos nuestro electronico
         electronico = new Electronico(req.body);
         await electronico.save();
@@ -13,7 +16,42 @@ exports.crearElectronico = async (req, res) => {
         res.status(500),send("Hubo un error");
     }
 }
-
+exports.crearElectronicoTelevisor = async (req, res) => {
+    try{
+        let electronico;
+        //Creamos nuestro electronico
+        electronico = new ElectronicoTelevisor(req.body);
+        await electronico.save();
+        res.send(electronico);
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+exports.crearElectronicoSmartWatch = async (req, res) => {
+    try{
+        let electronico;
+        //Creamos nuestro electronico
+        electronico = new ElectronicoSmartWatch(req.body);
+        await electronico.save();
+        res.send(electronico);
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+exports.crearElectronicoVideoGame = async (req, res) => {
+    try{
+        let electronico;
+        //Creamos nuestro electronico
+        electronico = new ElectronicoVideoGame(req.body);
+        await electronico.save();
+        res.send(electronico);
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
 //obtener todos los electronicos
 exports.obtenerElectronicos = async (req,res)=>{
     try{
