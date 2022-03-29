@@ -50,4 +50,4 @@ const ElectronicoSmartWatchSchema = mongoose.Schema({
         default: Date.now()
     }
 })
-module.exports = mongoose.model('Electronicosssss', ElectronicoSmartWatchSchema);
+module.exports = mongoose.model('ElectronicoSmartWatch', ElectronicoSmartWatchSchema, 'electronicos');

@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
-const ElectronicoTelevisorSchema = mongoose.Schema({
+const Televisor = require('./Electronico.js');
+
+const { Schema } = mongoose;
+mongoose.Promise = global.Promise;
+
+const televisorSchema = mongoose.Schema({
     idInventario:{
         type: Number,
         required: true
@@ -50,4 +55,4 @@ const ElectronicoTelevisorSchema = mongoose.Schema({
         default: Date.now()
     }
 })
-module.exports = mongoose.model('electronicos', ElectronicoTelevisorSchema);
+module.exports = mongoose.model('ElectronicoTelevisor', televisorSchema, 'electronicos');

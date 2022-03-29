@@ -46,4 +46,4 @@ const ElectronicoVideoGameSchema = mongoose.Schema({
         default: Date.now()
     }
 })
-module.exports = mongoose.model('Electronicoss', ElectronicoVideoGameSchema);
+module.exports = mongoose.models.Electronicos || mongoose.model('ElectronicoVideoGame', ElectronicoVideoGameSchema, 'electronicos');
