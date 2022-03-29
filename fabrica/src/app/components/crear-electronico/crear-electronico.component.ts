@@ -155,6 +155,14 @@ export class CrearElectronicoComponent implements OnInit {
             this.electronicoForm.reset();
         })
       }
+      else{
+        this._electronicoService.nuevoElectronico(ELECTRONICO).subscribe(data => {
+          this.router.navigate(['/']);
+        }, error =>{
+            console.log(error);
+            this.electronicoForm.reset();
+        })
+      }
       
       
     }
