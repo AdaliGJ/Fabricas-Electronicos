@@ -78,4 +78,4 @@ const ElectronicoSchema = mongoose.Schema({
         default: Date.now()
     }
 })
-module.exports = mongoose.model('Electronicoz', ElectronicoSchema);
+module.exports = mongoose.model('Electronico', ElectronicoSchema);
