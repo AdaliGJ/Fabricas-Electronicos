@@ -10,6 +10,8 @@ import { ListarClienteComponent } from './components/listar-cliente/listar-clien
 import {HttpClientModule} from '@angular/common/http';
 import { ListarElectronicosComponent } from './components/listar-electronicos/listar-electronicos.component';
 import { CrearElectronicoComponent } from './components/crear-electronico/crear-electronico.component';
+import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usuarios.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CrearElectronicoComponent } from './components/crear-electronico/crear-
     CrearClienteComponent,
     ListarClienteComponent,
     ListarElectronicosComponent,
-    CrearElectronicoComponent
+    CrearElectronicoComponent,
+    ListarUsuarioComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,

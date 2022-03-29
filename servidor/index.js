@@ -17,6 +17,7 @@ app.use('/api/electronicoTelevisor', require('./routes/electronicoTelevisor'));
 app.use('/api/electronicoSmartWatch', require('./routes/electronicoSmartWatch'));
 app.use('/api/electronicoVideoGame', require('./routes/electronicoVideoGame'));
 app.use('/api/cliente', require('./routes/cliente'));
+app.use('/api/usuario', require('./routes/usuario'));
 
 
 
