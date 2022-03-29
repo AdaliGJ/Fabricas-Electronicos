@@ -3,20 +3,26 @@ const mongoose = require('mongoose');
 const DispositivosIndividualesShema = mongoose.Schema({
     serie:{
         type: Number,
-        required:true
+        required:true,
+        uninque: true
     },
     idTipoDispositivo:{
         type: Number,
         required:true
     },
-    tienda:{
+    empresa:{
         type: String,
         required:true
     },
     idInventario:{
-        type:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'electronicos' }],
-        required:true
+        type: Number,
+        required: true
     },
+    /*
+    idInventario:{
+        type:  mongoose.Schema.Types.ObjectId,
+        required:true
+    },*/
     fecha:{
         type: Date,
         default: Date.now()

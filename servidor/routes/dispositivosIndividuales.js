@@ -5,5 +5,9 @@ const controller = require('../controllers/dispositivosIndividualesController');
 
 //api/clientes
 router.post('/',controller.crearDispositivo);
+router.get('/Inventario',controller.obtenerPorInventario);
+router.get('/TipoDispositivo',controller.obtenerPorTipoDispositivo);
+router.get('/Empresa',controller.obtenerPorEmpresa);
+
 
 module.exports =  router;
