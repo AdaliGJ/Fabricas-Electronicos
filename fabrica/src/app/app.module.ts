@@ -10,7 +10,13 @@ import { ListarClienteComponent } from './components/listar-cliente/listar-clien
 import {HttpClientModule} from '@angular/common/http';
 import { ListarElectronicosComponent } from './components/listar-electronicos/listar-electronicos.component';
 import { CrearElectronicoComponent } from './components/crear-electronico/crear-electronico.component';
+<<<<<<< HEAD
 import { DatosExtraComponent } from './components/datos-extra/datos-extra.component';
+=======
+import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usuarios.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { LoginComponent } from './components/login/login.component';
+>>>>>>> 0837f99476c2a50ef688c7f19533c6a2746f22cb
 
 @NgModule({
   declarations: [
@@ -19,7 +25,13 @@ import { DatosExtraComponent } from './components/datos-extra/datos-extra.compon
     ListarClienteComponent,
     ListarElectronicosComponent,
     CrearElectronicoComponent,
+<<<<<<< HEAD
     DatosExtraComponent
+=======
+    ListarUsuarioComponent,
+    CrearUsuarioComponent,
+    LoginComponent
+>>>>>>> 0837f99476c2a50ef688c7f19533c6a2746f22cb
   ],
   imports: [
     BrowserModule,
