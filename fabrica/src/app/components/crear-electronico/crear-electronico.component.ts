@@ -196,5 +196,10 @@ export class CrearElectronicoComponent implements OnInit {
         this.tipoElectronico = 0;
       }
       console.log(this.tipoElectronico);
+
+      
+    }
+    retornoTipo(){
+      return this.tipoElectronico;
     }
 }

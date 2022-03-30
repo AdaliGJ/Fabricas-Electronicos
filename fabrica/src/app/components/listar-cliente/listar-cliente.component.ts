@@ -17,6 +17,7 @@ export class ListarClienteComponent implements OnInit {
   
   ngOnInit(): void {
     this.obtenerClientes();
+    
   }
 
   obtenerClientes(){
@@ -26,6 +27,7 @@ export class ListarClienteComponent implements OnInit {
     },error =>{
       console.log(error);
     })
+    
   }
 
   eliminarCliente(id:any){
@@ -34,6 +36,7 @@ export class ListarClienteComponent implements OnInit {
     }, error => {
       console.log(error)
     })
+    
   }
 
 }

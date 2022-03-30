@@ -76,7 +76,7 @@
                         <div class="mb-2" *ngIf="this.tipoElectronico==3">
                             <input type="text" formControlName="Consola" class="form-control form-control-sm"  placeholder="Consola ">
                         </div>
-
+                        <!--FIN DATOS EXTRA-->
                         <div class="mb-3">
                             <input type="text" formControlName="marca" class="form-control form-control-lg"  placeholder="marca">
                             <div class="text-danger"
@@ -121,7 +121,7 @@
                         </div>
                         <div class="mb-3">
                             <button routerLink="/lista-electronicos" class="btn btn-secondary btn-lg float-start">Regresar</button>
-                            <button type="submit" class="btn btn-success btn-lg float-end">Aceptar</button>
+                            <button routerLink="/lista-electronicos" type="submit" class="btn btn-success btn-lg float-end">Aceptar</button>
                         </div>
                         
                     </form>

@@ -20,9 +20,9 @@
                         </thead>
                         <tbody>
                           <tr *ngFor="let electronico of listElectronico">
-                            <th scope="row">1</th>
+                            <th scope="row">{{electronico._id}}</th>
                           
-                            <td>{{electronico.categoria}}</td>
+                            <td><a [routerLink] ="['/datos-extra', electronico._id]">{{electronico.categoria}}</a></td>
                             <td>{{electronico.marca}}</td>
                             <td>{{electronico.existencia}}</td>
                             <td>{{electronico.precio}}</td>
@@ -30,7 +30,7 @@
                             <td>{{electronico.modelo}}</td>
                             <td>{{electronico.descripcion}}</td>
                             <td>
-                                <button [routerLink] ="['/editar-electronico', electronico._id]" class="btn btn-success">E</button>
+                                <button [routerLink] ="['/editar-cliente', electronico._id]" class="btn btn-success">E</button>
                                 <button (click) ="eliminarElectronico(electronico._id)" class="btn btn-danger">D</button>
                             </td>
                           </tr>

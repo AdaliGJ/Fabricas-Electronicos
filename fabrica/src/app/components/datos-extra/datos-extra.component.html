@@ -1,0 +1,35 @@
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card"><div class="card-body text-center">
+                <span>DATOS EXTTRA</span>
+                    <form class="mt-3" [formGroup]="ElectronicoForm" >
+                        <div class="mb-3">
+                            <h6>Resolucion:</h6>
+                            <input type="text" formControlName="_id" class="form-control form-control-lg"  placeholder="{{this.datosElectronicos[0]}}">
+                        </div>
+                        <div class="mb-3">
+                            <h6>Bits:</h6>
+                            <input type="text" formControlName="encargado" class="form-control form-control-lg"  placeholder="{{this.datosElectronicos[1]}}">
+                        </div>
+                        <div class="mb-3">
+                            <h6>Pulgadas:</h6>
+                            <input type="text" formControlName="correo" class="form-control form-control-lg"  placeholder="{{this.datosElectronicos[2]}}">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6>Puertos HDMI</h6>
+                            <input type="text" formControlName="pais" class="form-control form-control-lg"  placeholder="{{this.datosElectronicos[3]}}">
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/lista-electronicos" class="btn btn-secondary btn-lg float-start">Regresar</button>
+                            <button (click)="show()">Regresar</button>
+                        </div>
+                    </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
