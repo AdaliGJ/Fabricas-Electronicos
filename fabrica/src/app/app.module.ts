@@ -12,6 +12,7 @@ import { ListarElectronicosComponent } from './components/listar-electronicos/li
 import { CrearElectronicoComponent } from './components/crear-electronico/crear-electronico.component';
 import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usuarios.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.
     ListarElectronicosComponent,
     CrearElectronicoComponent,
     ListarUsuarioComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

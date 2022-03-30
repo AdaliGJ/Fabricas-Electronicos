@@ -1,11 +1,14 @@
 const Usuario = require("../models/Usuario");
 
+
 exports.crearUsuario = async (req, res) => {
     try{
         let usuario;
+        usuario = new Usuario({
+            usuario: req.body.usuario,
+            nombre: req.body.nombre});
 
-        //Creamos nuestro usuario
-        usuario = new Usuario(req.body);
+        usuario.password = await usuario.hashPassword(req.body.password);   
         await usuario.save();
         res.send(usuario);
     }catch(error){
@@ -61,6 +64,37 @@ exports.obtenerUsuario = async (req,res)=>{
     }
 }
 
+exports.login = async (req,res)=>{
+    const login={
+        usuario: req.body.usuario,
+        password: req.body.password
+    }
+    
+    try{
+        let usuario = await Usuario.findOne({usuario: login.usuario});
+        if(!usuario){
+            res.status(404).json({msg: 'No existe el usuario'})
+        }
+        //res.json(usuario);
+
+        let match = await usuario.compareUserPassword(login.password, usuario.password);
+        console.log(login.password);
+        console.log(usuario.password);
+        if(match){
+            if (match) {
+                res.json(usuario);
+                
+            } 
+        }else {
+            res.json({_id:"error"});
+        }
+
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+
 exports.borrarUsuario = async (req,res)=>{
     try{
         let usuario = await Usuario.findById(req.params.id);
@@ -71,6 +105,17 @@ exports.borrarUsuario = async (req,res)=>{
         await Usuario.findOneAndRemove({ _id: req.params.id})
         res.json({msg: "Usuario eliminado con exito"});
 
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+
+exports.defineDummyData = async (req, res) => {
+    try{
+    res.json({
+        message: "Hello World"
+    })
     }catch(error){
         console.log(error);
         res.status(500),send("Hubo un error");

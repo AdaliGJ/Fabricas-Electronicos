@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuario';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,5 +28,9 @@ export class UsuarioService {
   }
   editarUsuario(id:string, usuario: Usuario): Observable<any>{
     return this.http.put(this.url + id, usuario);
+  }
+
+  userLogin(payload:string) {
+    return this.http.post(this.url + 'login', payload);
   }
 }
