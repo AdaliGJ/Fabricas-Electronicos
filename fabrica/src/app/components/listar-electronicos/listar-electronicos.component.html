@@ -30,7 +30,7 @@
                             <td>{{electronico.modelo}}</td>
                             <td>{{electronico.descripcion}}</td>
                             <td>
-                                <button [routerLink] ="['/editar-cliente', electronico._id]" class="btn btn-success">E</button>
+                                <button [routerLink] ="['/editar-electronico', electronico._id]" class="btn btn-success">E</button>
                                 <button (click) ="eliminarElectronico(electronico._id)" class="btn btn-danger">D</button>
                             </td>
                           </tr>

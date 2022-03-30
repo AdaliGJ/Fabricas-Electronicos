@@ -16,6 +16,10 @@ export class DatosExtraComponent implements OnInit {
   ElectronicoForm: FormGroup;
   titulo = 'Crear Producto';
   id: string | null;
+  titulo1:string;
+  titulo2:string;
+  titulo3:string;
+  titulo4:string;
 
   datosElectronicos : any;
 
@@ -33,6 +37,10 @@ export class DatosExtraComponent implements OnInit {
       pais: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
+    this.titulo1 = "";
+    this.titulo2 = "";
+    this.titulo3 = "";
+    this.titulo4 = "";
    }
 
   ngOnInit(): void {
@@ -45,15 +53,23 @@ export class DatosExtraComponent implements OnInit {
 
           this.datosElectronicos = data;
           if(data['categoria']=="Televisor"){
+            this.titulo1 = "Resolucion:";
             this.datosElectronicos[0] = data['resolucion'];
+            this.titulo2 = "Numero de Bits:";
             this.datosElectronicos[1] = data['bits'];
+            this.titulo3 = "Pulgadas:";
             this.datosElectronicos[2] = data['pulgadas'];
+            this.titulo4 = "Entradas HDMI";
             this.datosElectronicos[3] = data['hdmi'];
 
           }else if(data['categoria']=="Smartwatch"){
+            this.titulo1 = "Pulgadas:";
             this.datosElectronicos[0] = data['pulgadasReloj'];
+            this.titulo2 = "Sistema Operativo:";
             this.datosElectronicos[1] = data['sistemaOperativo'];
+            this.titulo3 = "Memoria RAM:";
             this.datosElectronicos[2] = data['ram'];
+            this.titulo4 = "Memoria:";
             this.datosElectronicos[3] = data['memoria'];
 
           }else if(data['categoria']=="Videojuego"){

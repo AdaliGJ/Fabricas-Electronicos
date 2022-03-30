@@ -52,8 +52,12 @@ export class CrearElectronicoComponent implements OnInit {
     this.esEditar();
   }
 
+  prueba(){
+    console.log("hola")
+  }
   agregarElectronico(){
     
+    console.log("dada");
 
     const ELECTRONICO: Electronico ={
       idInventario: 0,
@@ -123,17 +127,30 @@ export class CrearElectronicoComponent implements OnInit {
 
     
 
-    if(this.id !== null){
+    if(this.id !== null && this.tipoElectronico != 1 && 
+       this.tipoElectronico != 2 && this.tipoElectronico != 3){
+
+        console.log("Electronico Normal");
       this._electronicoService.editarElectronico(this.id, ELECTRONICO).subscribe(data=>{
-        this.router.navigate(['/'])
+        this.router.navigate(['/lista-electronicos'])
       }, error =>{
         console.log(error);
         this.electronicoForm.reset();
     })
-    }else{
+    }
+    else if(this.id !== null && this.tipoElectronico == 1){
+      console.log("Electronico Televisor");
+    }
+    else if(this.id !== null && this.tipoElectronico == 2){
+      console.log("Electronico Smart");
+    }
+    else if(this.id !== null && this.tipoElectronico == 3){
+      console.log("Electronico VideoGame");
+    }
+    else{
       if(this.tipoElectronico == 1){
         this._electronicoService.nuevoElectronicoTelevisor(ELECTRONICOtelevisor).subscribe(data => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/lista-electronicos']);
         }, error =>{
             console.log(error);
             this.electronicoForm.reset();
@@ -141,7 +158,7 @@ export class CrearElectronicoComponent implements OnInit {
       }
       else if(this.tipoElectronico == 2){
         this._electronicoService.nuevoElectronicoSmartWatch(ELECTRONICOsmartWatch).subscribe(data => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/lista-electronicos']);
         }, error =>{
             console.log(error);
             this.electronicoForm.reset();
@@ -149,7 +166,7 @@ export class CrearElectronicoComponent implements OnInit {
       }
       else if(this.tipoElectronico == 3){
         this._electronicoService.nuevoElectronicoVideoGame(ELECTRONICOVideoGame).subscribe(data => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/lista-electronicos']);
         }, error =>{
             console.log(error);
             this.electronicoForm.reset();
@@ -157,32 +174,16 @@ export class CrearElectronicoComponent implements OnInit {
       }
       else{
         this._electronicoService.nuevoElectronico(ELECTRONICO).subscribe(data => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/lista-electronicos']);
         }, error =>{
             console.log(error);
             this.electronicoForm.reset();
         })
       }
-      
-      
     }
-
   }
 
-    esEditar(){
-      if(this.id !== null){
-        this.titulo = 'Editar Electronico';
-        this._electronicoService.obtenerElectronico(this.id).subscribe(data=>{
-          this.electronicoForm.setValue({
-            categoria: data.categoria,
-            marca: data.marca,
-            existencia: data.existencia,
-            precio: data.precio,
-            color: data.color,
-          })
-        })
-      }
-    }
+    
 
     onChange(e:any){
       var seleccion = e.target.value;
@@ -201,5 +202,34 @@ export class CrearElectronicoComponent implements OnInit {
     }
     retornoTipo(){
       return this.tipoElectronico;
+    }
+
+    esEditar(){
+      if(this.id !== null){
+        console.log(this.id);
+        this.titulo = 'Editar Electronico';
+        this._electronicoService.obtenerElectronico(this.id).subscribe(data=>{
+          this.electronicoForm.setValue({
+            categoria: data.categoria,
+            marca: data.marca,
+            existencia: data.existencia,
+            precio: data.precio,
+            color: data.color,
+            modelo: data.modelo,
+            descripcion: data.descripcion,
+            resolucion: "",
+            bits: "",
+            pulgadas: "",
+            hdmi: "",
+            pulgadasReloj: "",
+            sistemaOperativo: "",
+            ram: "",
+            memoria: "",
+            maximoJugadores: "",
+            graficos: "",
+            consola: "",
+          })
+        })
+      }
     }
 }
