@@ -64,17 +64,19 @@ exports.obtenerElectronicos = async (req,res)=>{
 }
 exports.actualizarElectronico = async (req,res)=>{
     try{
-        const { empresa, encargado, telefono, correo, pais } = req.body;
+        const { categoria, marca, existencia, precio, color, modelo, descripcion } = req.body;
         let electronico = await Electronico.findById(req.params.id);
 
         if(!electronico){
             res.status(404).json({msg: 'No existe el electronico'})
         }
-        electronico.empresa = empresa;
-        electronico.encargado = encargado;
-        electronico.telefono = telefono;
-        electronico.correo = correo;
-        electronico.pais = pais;
+        electronico.categoria = categoria;
+        electronico.marca = marca;
+        electronico.existencia = existencia;
+        electronico.precio = precio;
+        electronico.color = color;
+        electronico.modelo = modelo;
+        electronico.descripcion = descripcion;
 
         electronico = await Electronico.findOneAndUpdate ({ _id:req.params.id}, electronico, {new:true})
         res.json(electronico);
