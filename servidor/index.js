@@ -18,6 +18,7 @@ app.use('/api/electronicoSmartWatch', require('./routes/electronicoSmartWatch'))
 app.use('/api/electronicoVideoGame', require('./routes/electronicoVideoGame'));
 app.use('/api/cliente', require('./routes/cliente'));
 app.use('/api/dispositivosIndividuales', require('./routes/dispositivosIndividuales'));
+app.use('/api/pedidos', require('./routes/pedidos'));
 
 
 

@@ -72,7 +72,7 @@ exports.obtenerPorTipoDispositivo = async (req,res)=>{
 
 exports.actualizarDispositivo = async (req,res)=>{
     try{
-        const { idTipoDispositivo, empresa, idInventario } = req.body;
+        const { idTipoDispositivo, empresa, idInventario,fechaVentas } = req.body;
         let dispositivo = await DispositivosIndividuales.find({_id:req.params.id});
 
 
@@ -85,13 +85,18 @@ exports.actualizarDispositivo = async (req,res)=>{
         dispositivo.idTipoDispositivo = idTipoDispositivo;
         dispositivo.idInventario = idInventario;
 
+        let date = new Date(fechaVentas);
+
+        dispositivo.fechaVentas = date;
+
         console.log(dispositivo.empresa);
 
         dispositivo = await DispositivosIndividuales.findOneAndUpdate({ _id:req.params.id}, 
             {
                 idTipoDispositivo:dispositivo.idTipoDispositivo,
                 empresa:dispositivo.empresa,
-                idInventario:dispositivo.idInventario
+                idInventario:dispositivo.idInventario,
+                fechaVentas:dispositivo.fechaVentas
 
             }, {new:true})
 
