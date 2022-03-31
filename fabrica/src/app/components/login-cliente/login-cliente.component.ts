@@ -2,25 +2,25 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Usuario } from 'src/app/models/usuario';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { Cliente } from 'src/app/models/cliente';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './login-cliente.component.html',
+  styleUrls: ['./login-cliente.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginClienteComponent implements OnInit {
   loginForm: FormGroup;
   titulo = 'Login';
   id: string | null;
 
   constructor(private fb: FormBuilder,
     private router:Router,
-    private _usuarioService: UsuarioService,
+    private _clienteService: ClienteService,
     private aRouter: ActivatedRoute) {
     this.loginForm = this.fb.group({
-      usuario: ['', Validators.required],
+      cliente: ['', Validators.required],
       password: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
@@ -31,12 +31,12 @@ export class LoginComponent implements OnInit {
     
   }
 
-  loginUser(){
-    this._usuarioService.userLogin(this.loginForm.value).subscribe(
+  loginClient(){
+    this._clienteService.clientLogin(this.loginForm.value).subscribe(
       (data: any) => {
         let token = data._id;
         console.log(data);
-        localStorage.setItem('usuario', token);
+        localStorage.setItem('cliente', token);
         location.reload();
         this.router.navigate([ '' ]);
       },
@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  usuarioLocal(){
-    this.loginForm.setValue({error: 'Usuario o Contraseña Incorrectos'})
+  clienteLocal(){
+    this.loginForm.setValue({error: 'Cliente o Contraseña Incorrectos'})
   }
   
 }

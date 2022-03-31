@@ -28,4 +28,7 @@ export class ClienteService {
   editarCliente(id:string, cliente: Cliente): Observable<any>{
     return this.http.put(this.url + id, cliente);
   }
+  clientLogin(payload:string) {
+    return this.http.post(this.url + 'login', payload);
+  }
 }

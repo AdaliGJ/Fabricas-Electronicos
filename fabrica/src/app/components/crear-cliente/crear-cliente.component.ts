@@ -25,6 +25,7 @@ export class CrearClienteComponent implements OnInit {
       correo: ['', Validators.required],
       telefono: ['', Validators.required],
       pais: ['', Validators.required],
+      password:  ['', Validators.required]
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
    }
@@ -42,7 +43,8 @@ export class CrearClienteComponent implements OnInit {
       encargado: this.clienteForm.get('encargado')?.value,
       correo: this.clienteForm.get('correo')?.value,
       telefono: this.clienteForm.get('telefono')?.value,
-      pais: this.clienteForm.get('pais')?.value
+      pais: this.clienteForm.get('pais')?.value,
+      password: this.clienteForm.get('password')?.value
     }
 
     if(this.id !== null){
