@@ -45,5 +45,9 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  usuarioLocal(){
+    this.loginForm.setValue({error: 'Usuario o Contraseña Incorrectos'})
+  }
   
 }
