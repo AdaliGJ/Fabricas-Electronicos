@@ -6,6 +6,7 @@ export class Cliente{
 	correo: string;
 	telefono : number;
 	pais : string;
+    password : string;
 
     constructor(
         idEmpresa : number,
@@ -13,7 +14,8 @@ export class Cliente{
         encargado: string,
         correo: string,
         telefono : number,
-        pais : string)
+        pais : string,
+        password : string)
         {
         this.idEmpresa = idEmpresa;
         this.empresa = empresa;
@@ -21,6 +23,7 @@ export class Cliente{
         this.correo = correo;
         this.telefono = telefono;
         this.pais = pais;
+        this.password = password;
     }
 
 }

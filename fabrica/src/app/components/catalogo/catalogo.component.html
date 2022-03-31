@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="row">
+       
+            <div class="card ">
+                
+                    <h2>Catalogo</h2>
+                
+                
+                <div *ngFor="let electronico of listElectronico" class="w-25 border border-dark rounded display">
+                    <div>
+                        <h3 class="bg-secondary text-white">{{electronico.marca}} {{electronico.modelo}}</h3>
+                        <h6>{{electronico.categoria}}</h6>
+                        <h6>{{electronico.descripcion}}</h6>
+                        <h6>{{electronico._id}}</h6>
+                        <h6 class="bg-warning">Q.{{electronico.precio}}.00</h6>
+                        <button [routerLink] ="['/detalles', electronico._id]" class="btn  btn-secondary float-start">Datalles</button>
+                        <button  class="btn btn-success btn-dark float-end">Comprar</button>
+                    </div>
+                </div>
+                
+            </div>
+    </div>
+</div>

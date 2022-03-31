@@ -29,7 +29,7 @@
                             <input type="number" formControlName="telefono" class="form-control form-control-lg"  placeholder="Telefono">
                             <div class="text-danger"
                             *ngIf="clienteForm.get('telefono')?.hasError('required') && clienteForm.get('telefono')?.touched">
-                                <span>Telefono del encargado obligatorio</span>
+                                <span>Teléfono del encargado obligatorio</span>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -37,6 +37,13 @@
                             <div class="text-danger"
                             *ngIf="clienteForm.get('pais')?.hasError('required') && clienteForm.get('pais')?.touched">
                                 <span>Pais obligatorio</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="password" class="form-control form-control-lg"  placeholder="Contraseña" type="password">
+                            <div class="text-danger"
+                            *ngIf="clienteForm.get('password')?.hasError('required') && clienteForm.get('password')?.touched">
+                                <span>Contraseña Obligatoria</span>
                             </div>
                         </div>
                         <div class="mb-3">
