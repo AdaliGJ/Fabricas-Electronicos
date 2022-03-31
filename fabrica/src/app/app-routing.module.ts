@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { CrearClienteComponent } from './components/crear-cliente/crear-cliente.component';
 import { CrearElectronicoComponent } from './components/crear-electronico/crear-electronico.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { DatosExtraComponent } from './components/datos-extra/datos-extra.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
 import { ListarClienteComponent } from './components/listar-cliente/listar-cliente.component';
 import { ListarElectronicosComponent } from './components/listar-electronicos/listar-electronicos.component';
 import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usuarios.component';
@@ -24,6 +26,8 @@ var routes: Routes;
     {path: 'lista-electronicos', component: ListarElectronicosComponent},
     {path: 'lista-usuarios', component: ListarUsuarioComponent},
     {path: 'datos-extra/:id', component: DatosExtraComponent},
+    {path: 'catalogo', component: CatalogoComponent},
+    {path: 'detalles/:id', component: DetallesComponent },
     //{path: 'login', component: LoginComponent},
     {path:'**', redirectTo: '', pathMatch: 'full'}
   ];

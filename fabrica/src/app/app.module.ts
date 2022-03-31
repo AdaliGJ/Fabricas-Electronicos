@@ -13,6 +13,8 @@ import { CrearElectronicoComponent } from './components/crear-electronico/crear-
 import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usuarios.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { LoginComponent } from './components/login/login.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LoginComponent } from './components/login/login.component';
     CrearElectronicoComponent,
     ListarUsuarioComponent,
     CrearUsuarioComponent,
-    LoginComponent
+    LoginComponent,
+    CatalogoComponent,
+    DetallesComponent
   ],
   imports: [
     BrowserModule,
