@@ -87,23 +87,23 @@ exports.borrarCliente = async (req,res)=>{
 
 exports.login = async (req,res)=>{
     const login={
-        cliente: req.body.cliente,
+        usuario: req.body.cliente,
         password: req.body.password
     }
     
     try{
-        let cliente = await Usuario.findOne({correo: login.cliente});
-        if(!cliente){
-            res.status(404).json({msg: 'No existe el cliente'})
+        let usuario = await Cliente.findOne({correo: login.usuario});
+        if(!usuario){
+            res.status(404).json({msg:  req.body})
         }
-        //res.json(cliente);
+        //res.json(usuario);
 
-        let match = await cliente.compareUserPassword(login.password, cliente.password);
+        let match = await usuario.compareUserPassword(login.password, usuario.password);
         console.log(login.password);
-        console.log(cliente.password);
+        console.log(usuario.password);
         if(match){
             if (match) {
-                res.json(cliente);
+                res.json(usuario);
                 
             } 
         }else {
