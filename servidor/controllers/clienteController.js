@@ -3,9 +3,16 @@ const Cliente = require("../models/Cliente");
 exports.crearCliente = async (req, res) => {
     try{
         let cliente;
+        cliente = new Cliente({
+            empresa: req.body.empresa,
+            encargado: req.body.encargado,
+            telefono: req.body.telefono,
+            correo: req.body.correo,
+            pais: req.body.pais,
+            fechaCreacion: req.body.fechaCreacion});
 
         //Creamos nuestro cliente
-        cliente = new Cliente(req.body);
+        cliente.password = await cliente.hashPassword(req.body.password); 
         await cliente.save();
         res.send(cliente);
     }catch(error){
@@ -71,6 +78,37 @@ exports.borrarCliente = async (req,res)=>{
 
         await Cliente.findOneAndRemove({ _id: req.params.id})
         res.json({msg: "Cliente eliminado con exito"});
+
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+
+exports.login = async (req,res)=>{
+    const login={
+        cliente: req.body.cliente,
+        password: req.body.password
+    }
+    
+    try{
+        let cliente = await Usuario.findOne({correo: login.cliente});
+        if(!cliente){
+            res.status(404).json({msg: 'No existe el cliente'})
+        }
+        //res.json(cliente);
+
+        let match = await cliente.compareUserPassword(login.password, cliente.password);
+        console.log(login.password);
+        console.log(cliente.password);
+        if(match){
+            if (match) {
+                res.json(cliente);
+                
+            } 
+        }else {
+            res.json({_id:"error"});
+        }
 
     }catch(error){
         console.log(error);

@@ -7,6 +7,7 @@ import { ListarClienteComponent } from './components/listar-cliente/listar-clien
 import { ListarElectronicosComponent } from './components/listar-electronicos/listar-electronicos.component';
 import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usuarios.component';
 import { LoginComponent } from './components/login/login.component';
+import { LoginClienteComponent } from './components/login-cliente/login-cliente.component';
 
 const localUser=localStorage.getItem("usuario");
 
@@ -27,7 +28,7 @@ if(localUser=="" || localUser==null || localUser=="error"){
     {path: 'editar-usuario/:id', component: CrearUsuarioComponent},
     {path: 'lista-electronicos', component: ListarElectronicosComponent},
     {path: 'lista-usuarios', component: ListarUsuarioComponent},
-    //{path: 'login', component: LoginComponent},
+    {path: 'login-cliente', component: LoginClienteComponent},
     {path:'**', redirectTo: '', pathMatch: 'full'}
   ];
 }
