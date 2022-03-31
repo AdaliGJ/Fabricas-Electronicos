@@ -40,7 +40,7 @@ else{
     {path: 'editar-usuario/:id', component: CrearUsuarioComponent},
     {path: 'lista-electronicos', component: ListarElectronicosComponent},
     {path: 'lista-usuarios', component: ListarUsuarioComponent},
-    {path: 'login-cliente', component: LoginClienteComponent},
+    //{path: 'login-cliente', component: LoginClienteComponent},
     {path:'**', redirectTo: '', pathMatch: 'full'}
   ];
 }
