@@ -8,17 +8,29 @@ import { ListarElectronicosComponent } from './components/listar-electronicos/li
 import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usuarios.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginClienteComponent } from './components/login-cliente/login-cliente.component';
+import {CatalogoComponent} from './components/catalogo/catalogo.component'
+import { DetallesComponent } from './components/detalles/detalles.component';
 
 const localUser=localStorage.getItem("usuario");
+const localClient=localStorage.getItem("cliente");
 
 var routes: Routes;
 
-if(localUser=="" || localUser==null || localUser=="error"){
+if((localUser=="" || localUser==null || localUser=="error") && (localClient=="" || localClient==null || localClient=="error") ){
   routes  = [
    {path: 'login', component: LoginComponent},
+   {path: 'login-cliente', component: LoginClienteComponent},
     {path:'**', redirectTo: 'login', pathMatch: 'full'}
   ];
-}else{
+}
+else if(localUser=="" || localUser==null || localUser=="error"){
+  routes  = [
+    {path: 'catalogo', component: CatalogoComponent},
+    {path: 'detalles/:id', component: DetallesComponent},
+     {path:'**', redirectTo: 'catalogo', pathMatch: 'full'}
+   ];
+}
+else{
   routes  = [
     {path: '', component: ListarClienteComponent},
     {path: 'crear-cliente', component: CrearClienteComponent},

@@ -14,6 +14,8 @@ import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usua
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginClienteComponent } from './components/login-cliente/login-cliente.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { LoginClienteComponent } from './components/login-cliente/login-cliente.
     ListarUsuarioComponent,
     CrearUsuarioComponent,
     LoginComponent,
-    LoginClienteComponent
+    LoginClienteComponent,
+    CatalogoComponent,
+    DetallesComponent
   ],
   imports: [
     BrowserModule,
