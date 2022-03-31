@@ -18,7 +18,7 @@
                                 <span>Nombre del usuario obligatorio</span>
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3"> 
                             <input type="password" formControlName="password" class="form-control form-control-lg"  placeholder="Contraseña">
                             <div class="text-danger"
                             *ngIf="usuarioForm.get('password')?.hasError('required') && usuarioForm.get('password')?.touched">
