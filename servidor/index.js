@@ -22,6 +22,7 @@ app.use('/api/dispositivosIndividuales', require('./routes/dispositivosIndividua
 app.use('/api/pedidos', require('./routes/pedidos'));
 app.use('/api/garantia', require('./routes/garantia'));
 app.use('/api/usuario', require('./routes/usuario'));
+app.use('/api/reporteria', require('./routes/reporteria'));
 
 
 

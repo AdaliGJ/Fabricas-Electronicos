@@ -38,6 +38,10 @@ const televisorSchema = mongoose.Schema({
         type: String,
         default: Date.now()
     },
+    diasEnvio:{
+        type: Number,
+        default: 5
+    },
     resolucion: {
         type: String,
         default: Date.now()

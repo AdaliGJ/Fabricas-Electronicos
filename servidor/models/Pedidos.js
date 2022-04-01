@@ -17,6 +17,10 @@ const PedidosSchema = mongoose.Schema({
         required: true,
         ref: 'electronico'
     },
+    cantidad:{
+        type: Number,
+        required: true
+    },
     estado:{
         type: String,
         required: true

@@ -32,6 +32,10 @@ const ElectronicoSchema = mongoose.Schema({
     descripcion: {
         type: String,
         default: Date.now()
+    },
+    diasEnvio:{
+        type: Number,
+        default: 5
     }
 })
 module.exports = mongoose.model('Electronico', ElectronicoSchema, 'electronicos');

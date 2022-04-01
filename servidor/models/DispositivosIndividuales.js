@@ -19,11 +19,11 @@ const DispositivosIndividualesShema = mongoose.Schema({
         required: true,
         ref: 'electronico'
     },
-    /*
-    idInventario:{
-        type:  mongoose.Schema.Types.ObjectId,
-        required:true
-    },*/
+    idPedidos:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'pedidos'
+    },
     fecha:{
         type: Date,
         default: Date.now()
