@@ -6,8 +6,8 @@ const DispositivosIndividualesShema = mongoose.Schema({
         required:true,
         uninque: true
     },
-    idTipoDispositivo:{
-        type: Number,
+    categoria:{
+        type: String,
         required:true
     },
     empresa:{
