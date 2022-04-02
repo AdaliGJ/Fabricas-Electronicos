@@ -14,7 +14,7 @@ exports.crearReporte = async (req, res) => {
         //Creacion del reporte vacio
         reporteria = new Reporteria();
 
-        const jsonDispositivo = await DispositivosIndividuales.findOne({serie:serie});
+        const jsonDispositivo = await DispositivosIndividuales.findOneAndUpdate({serie:serie},{fechaVentas:Date.now()});
 
         console.log(jsonDispositivo);
         
