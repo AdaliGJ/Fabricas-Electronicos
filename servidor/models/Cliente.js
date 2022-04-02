@@ -32,6 +32,10 @@ const ClienteSchema = mongoose.Schema({
     password:{
         type: String,
         required: true
+    },
+    diasEntrega:{
+        type: Number,
+        default: 5
     }
 });
 

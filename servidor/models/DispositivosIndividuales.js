@@ -6,24 +6,31 @@ const DispositivosIndividualesShema = mongoose.Schema({
         required:true,
         uninque: true
     },
-    idTipoDispositivo:{
-        type: Number,
+    categoria:{
+        type: String,
         required:true
     },
     empresa:{
         type: String,
         required:true
     },
-    idInventario:{
-        type: Number,
+    idCliente:{
+        type:String,
         required: true
     },
-    /*
     idInventario:{
-        type:  mongoose.Schema.Types.ObjectId,
-        required:true
-    },*/
+        type: String,
+        required: true
+    },
+    idPedidos:{
+        type: String,
+        required: true
+    },
     fecha:{
+        type: Date,
+        default: Date.now()
+    },
+    fechaVentas:{
         type: Date,
         default: Date.now()
     }

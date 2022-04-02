@@ -36,4 +36,9 @@ export class ListarUsuarioComponent implements OnInit {
     })
   }
 
+  logout(){
+    localStorage.setItem('usuario', '');
+    window.location.reload();
+  }
+
 }

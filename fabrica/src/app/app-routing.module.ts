@@ -11,8 +11,10 @@ import { LoginClienteComponent } from './components/login-cliente/login-cliente.
 import {CatalogoComponent} from './components/catalogo/catalogo.component'
 import { DetallesComponent } from './components/detalles/detalles.component';
 import { DatosExtraComponent } from './components/datos-extra/datos-extra.component';
+
 import { CompraComponent } from './components/compra/compra.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+
 
 const localUser=localStorage.getItem("usuario");
 const localClient=localStorage.getItem("cliente");

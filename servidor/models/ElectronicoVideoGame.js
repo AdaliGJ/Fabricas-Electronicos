@@ -33,6 +33,10 @@ const ElectronicoVideoGameSchema = mongoose.Schema({
         type: String,
         default: Date.now()
     },
+    diasEnvio:{
+        type: Number,
+        default: 5
+    },
     maximoJugadores: {
         type: String,
         default: Date.now()

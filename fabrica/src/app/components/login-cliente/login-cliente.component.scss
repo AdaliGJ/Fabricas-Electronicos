@@ -10,3 +10,19 @@ h1{
 #error{
     display: none;
 }
+
+p{
+    color: white;
+}
+
+a{
+    color: aqua;
+    text-decoration: none;
+}
+
+
+a:hover{
+    color: yellow;
+    text-decoration: none;
+    cursor: pointer;
+}

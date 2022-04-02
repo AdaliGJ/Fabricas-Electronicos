@@ -7,7 +7,7 @@ const controller = require('../controllers/dispositivosIndividualesController');
 router.post('/',controller.crearDispositivo);
 router.get('/:id',controller.obtenerDispositivo);
 router.get('/search/Inventario',controller.obtenerPorInventario);
-router.get('/search/TipoDispositivo',controller.obtenerPorTipoDispositivo);
+router.get('/search/Categoria',controller.obtenerPorCategoria);
 router.get('/search/Empresa',controller.obtenerPorEmpresa);
 router.put('/:id',controller.actualizarDispositivo);
 router.delete('/:id',controller.borrarDispositivo);

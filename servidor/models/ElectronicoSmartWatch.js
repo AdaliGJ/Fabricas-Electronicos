@@ -33,6 +33,10 @@ const ElectronicoSmartWatchSchema = mongoose.Schema({
         type: String,
         default: Date.now()
     },
+    diasEnvio:{
+        type: Number,
+        default: 5
+    },
     pulgadasReloj: {
         type: String,
         default: Date.now()

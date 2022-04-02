@@ -57,12 +57,12 @@ exports.obtenerPorEmpresa = async (req,res)=>{
         res.status(500),send("Hubo un error");
     }
 }
-exports.obtenerPorTipoDispositivo = async (req,res)=>{
+exports.obtenerPorCategoria = async (req,res)=>{
     try{
         let dispositivo;
         dispositivo = new DispositivosIndividuales(req.body);
 
-        const doc = await DispositivosIndividuales.find({idTipoDispositivo:dispositivo.idTipoDispositivo});
+        const doc = await DispositivosIndividuales.find({categoria:dispositivo.categoria});
         res.json(doc);
     }catch(error){
         console.log(error);
@@ -72,30 +72,42 @@ exports.obtenerPorTipoDispositivo = async (req,res)=>{
 
 exports.actualizarDispositivo = async (req,res)=>{
     try{
-        const { idTipoDispositivo, empresa, idInventario } = req.body;
+        const { categoria, empresa, idCliente, idInventario, idPedidos, fechaVentas } = req.body;
         let dispositivo = await DispositivosIndividuales.find({_id:req.params.id});
 
 
-        console.log(empresa);
+        //console.log(empresa);
 
         if(!dispositivo){
             res.status(404).json({msg: 'No existe el cliente'})
         }
         dispositivo.empresa = empresa;
-        dispositivo.idTipoDispositivo = idTipoDispositivo;
+        dispositivo.categoria = categoria;
+        dispositivo.idCliente = idCliente;
         dispositivo.idInventario = idInventario;
+        dispositivo.idPedidos = idPedidos;
 
-        console.log(dispositivo.empresa);
+        if(fechaVentas != null){
+            let date = new Date(fechaVentas);
+
+            dispositivo.fechaVentas = date;
+        }
+        
+
+        //console.log(dispositivo.empresa);
 
         dispositivo = await DispositivosIndividuales.findOneAndUpdate({ _id:req.params.id}, 
             {
-                idTipoDispositivo:dispositivo.idTipoDispositivo,
+                categoria:dispositivo.categoria,
                 empresa:dispositivo.empresa,
-                idInventario:dispositivo.idInventario
+                idCliente:dispositivo.idCliente,
+                idInventario:dispositivo.idInventario,
+                idPedidos:dispositivo.idPedidos,
+                fechaVentas:dispositivo.fechaVentas
 
             }, {new:true})
 
-        console.log(dispositivo.empresa);
+        //console.log(dispositivo.empresa);
 
         res.json(dispositivo);
 
