@@ -12,8 +12,7 @@ exports.crearPedido = async (req, res) => {
 
         let datosCliente = await Cliente.findById(pedido.cliente);
 
-        //let diasCliente = datosCliente.telefono;
-        let diasCliente = 5;
+        let diasCliente = datosCliente.diasEntrega;
 
         let date = new Date();
         
@@ -44,7 +43,7 @@ exports.obtenerPedidos= async (req,res)=>{
 }
 exports.actualizarPedido = async (req,res)=>{
     try{
-        const { cliente, idInventario, estado, entrega, fechaEntrega } = req.body;
+        const { cliente, idInventario, estado, cantidad, entrega, fechaEntrega } = req.body;
         let pedido = await Pedidos.findById(req.params.id);
 
         if(!pedido){
@@ -53,16 +52,18 @@ exports.actualizarPedido = async (req,res)=>{
         pedido.cliente = cliente;
         pedido.idInventario = idInventario;
         pedido.estado = estado;
-        //pedido.entrega = entrega;
-        //pedido.fechaEntrega = fechaEntrega;
+        pedido.cantidad = cantidad;
+        pedido.entrega = entrega;
+        pedido.fechaEntrega = fechaEntrega;
 
         pedido = await Pedidos.findOneAndUpdate ({ _id:req.params.id}, 
             {
                 cliente:pedido.cliente,
                 idInventario:pedido.idInventario,
                 estado:pedido.estado,
-                //entrega:pedido.entrega,
-                //fechaEntrega:pedido.fechaEntrega
+                cantidad:pedido.cantidad,
+                entrega:pedido.entrega,
+                fechaEntrega:pedido.fechaEntrega
 
             }, {new:true})
         res.json(pedido);

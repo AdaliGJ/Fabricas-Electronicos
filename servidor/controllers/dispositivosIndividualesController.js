@@ -72,7 +72,7 @@ exports.obtenerPorCategoria = async (req,res)=>{
 
 exports.actualizarDispositivo = async (req,res)=>{
     try{
-        const { categoria, empresa, idInventario, fechaVentas } = req.body;
+        const { categoria, empresa, idCliente, idInventario, idPedidos, fechaVentas } = req.body;
         let dispositivo = await DispositivosIndividuales.find({_id:req.params.id});
 
 
@@ -83,7 +83,9 @@ exports.actualizarDispositivo = async (req,res)=>{
         }
         dispositivo.empresa = empresa;
         dispositivo.categoria = categoria;
+        dispositivo.idCliente = idCliente;
         dispositivo.idInventario = idInventario;
+        dispositivo.idPedidos = idPedidos;
 
         if(fechaVentas != null){
             let date = new Date(fechaVentas);
@@ -98,7 +100,9 @@ exports.actualizarDispositivo = async (req,res)=>{
             {
                 categoria:dispositivo.categoria,
                 empresa:dispositivo.empresa,
+                idCliente:dispositivo.idCliente,
                 idInventario:dispositivo.idInventario,
+                idPedidos:dispositivo.idPedidos,
                 fechaVentas:dispositivo.fechaVentas
 
             }, {new:true})

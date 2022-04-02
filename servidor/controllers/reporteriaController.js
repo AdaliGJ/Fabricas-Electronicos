@@ -18,21 +18,21 @@ exports.crearReporte = async (req, res) => {
 
         console.log(jsonDispositivo);
         
-        let strIdInventario = jsonDispositivo.idInventario;
+        //let strIdInventario = jsonDispositivo.idInventario;
         //console.log(strIdInventario.toHexString());
 
         //let stringPrueba = mongoose.Types.ObjectId(strIdInventario.toHexString()).valueOf();
         //console.log(stringPrueba);
 
-        const jsonInventario = await Electronico.findById(strIdInventario.toHexString());
+        const jsonInventario = await Electronico.findById(jsonDispositivo.idInventario);
         console.log(jsonInventario);
 
-        let strIdPedidos = jsonDispositivo.idPedidos;
-        const jsonPedidos = await Pedidos.findById(strIdPedidos.toHexString());
+        //let strIdPedidos = jsonDispositivo.idPedidos;
+        const jsonPedidos = await Pedidos.findById(jsonDispositivo.idPedidos);
         console.log(jsonPedidos);
 
-        let strCliente = jsonPedidos.cliente;
-        const jsonCliente = await Cliente.findById(strCliente.toHexString());
+        //let strCliente = jsonPedidos.cliente;
+        const jsonCliente = await Cliente.findById(jsonDispositivo.idCliente);
         console.log(jsonCliente);
 
         reporteria.serie = serie;

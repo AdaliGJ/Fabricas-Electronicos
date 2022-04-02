@@ -8,14 +8,12 @@ const PedidosSchema = mongoose.Schema({
         default: Date.now()
     },
     cliente:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'cliente'
+        type: String,
+        required: true
     },
     idInventario:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'electronico'
+        type: String,
+        required: true
     },
     cantidad:{
         type: Number,

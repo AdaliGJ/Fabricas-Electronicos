@@ -14,15 +14,17 @@ const DispositivosIndividualesShema = mongoose.Schema({
         type: String,
         required:true
     },
+    idCliente:{
+        type:String,
+        required: true
+    },
     idInventario:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'electronico'
+        type: String,
+        required: true
     },
     idPedidos:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'pedidos'
+        type: String,
+        required: true
     },
     fecha:{
         type: Date,
