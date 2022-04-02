@@ -14,6 +14,11 @@ import { ListarUsuarioComponent } from './components/listar-usuarios/listar-usua
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginClienteComponent } from './components/login-cliente/login-cliente.component';
+import { DetallesComponent } from './components/detalles/detalles.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { CompraComponent } from './components/compra/compra.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,11 @@ import { LoginClienteComponent } from './components/login-cliente/login-cliente.
     ListarUsuarioComponent,
     CrearUsuarioComponent,
     LoginComponent,
-    LoginClienteComponent
+    LoginClienteComponent,
+    DetallesComponent,
+    CatalogoComponent,
+    CompraComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,

@@ -39,6 +39,9 @@ export class ElectronicoService {
   obtenerElectronico(id: string): Observable<any>{
     return this.http.get(this.url + id);
   }
+  obtenerElectronicoCompra(id: string | null): Observable<any>{
+    return this.http.get(this.url + id);
+  }
   editarElectronico(id:string, electronico: Electronico): Observable<any>{
     return this.http.put(this.url + id, electronico);
   }

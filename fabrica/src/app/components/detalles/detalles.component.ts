@@ -45,7 +45,9 @@ export class DetallesComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
     this.esEditar();
+    
   }
 
 

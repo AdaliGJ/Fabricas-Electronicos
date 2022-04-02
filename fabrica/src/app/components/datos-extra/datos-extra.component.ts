@@ -81,12 +81,7 @@ export class DatosExtraComponent implements OnInit {
       }
     }
 
-    show(){
-      if(this.datosElectronicos['categoria']=="Televisor"){
-        console.log("Hola");
-
-      }
-    }
+   
 
     
 }
