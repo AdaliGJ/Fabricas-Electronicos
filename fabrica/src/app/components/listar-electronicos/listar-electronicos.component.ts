@@ -36,4 +36,9 @@ export class ListarElectronicosComponent implements OnInit {
     })
   }
 
+  logout(){
+    localStorage.setItem('usuario', '');
+    window.location.reload();
+  }
+
 }

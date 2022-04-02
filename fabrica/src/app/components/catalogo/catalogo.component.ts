@@ -37,5 +37,10 @@ export class CatalogoComponent implements OnInit {
     })
   }
 
+  logout(){
+    localStorage.setItem('cliente', '');
+    window.location.reload();
+  }
+
   
 }

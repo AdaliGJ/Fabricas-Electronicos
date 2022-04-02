@@ -39,4 +39,9 @@ export class ListarClienteComponent implements OnInit {
     
   }
 
+  logout(){
+    localStorage.setItem('usuario', '');
+    window.location.reload();
+  }
+
 }
