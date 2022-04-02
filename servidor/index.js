@@ -21,7 +21,8 @@ app.use('/api/cliente', require('./routes/cliente'));
 app.use('/api/dispositivosIndividuales', require('./routes/dispositivosIndividuales'));
 app.use('/api/compra', require('./routes/compra'));
 app.use('/api/reporte', require('./routes/reporte'));
-
+app.use('/api/reporteria', require('./routes/reporteria'));
+app.use('/api/lastSeen', require('./routes/lastSeen'));
 app.use('/api/pedidos', require('./routes/pedidos'));
 app.use('/api/garantia', require('./routes/garantia'));
 

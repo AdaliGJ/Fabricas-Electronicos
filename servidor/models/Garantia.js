@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 
 const GarantiaSchema = mongoose.Schema({
     idInventario:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'electronico'
+        type: String,
+        required: true
     },
     mesesGarantia:{
         type: Number,

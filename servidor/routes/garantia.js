@@ -7,7 +7,8 @@ const garantiasController = require('../controllers/garantiasController');
 router.post('/',garantiasController.crearGarantia);
 router.get('/', garantiasController.obtenerGarantias);
 router.put('/:id', garantiasController.actualizarGarantia);
-//router.get('/:id', clienteController.obtenerCliente);
+router.get('/:id', garantiasController.obtenerGarantia);
+router.get('/dispositivo/:id', garantiasController.verificarGarantia);
 //router.delete('/:id', clienteController.borrarCliente);
 
 module.exports =  router;

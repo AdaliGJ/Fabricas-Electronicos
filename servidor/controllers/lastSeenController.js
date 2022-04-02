@@ -75,3 +75,31 @@ exports.crearLastSeen = async (req, res) => {
         res.status(500),send("Hubo un error");
     }
 }
+
+exports.obtenerReporteria = async (req,res)=>{
+    try{
+
+        let lastSeen = await LastSeen.findById(req.params.id);
+        
+        let obj = [];
+        let registros = lastSeen.reportes;
+        console.log(registros);
+
+        var count = Object.keys(registros).length;
+        for(var i = 0; i<count; i++){
+
+            let strFind = registros[i].idReporteria;
+            const reporte = await Reporteria.findOne({_id: strFind});
+            //console.log(reporte);
+            obj.push(reporte);
+        }
+
+        console.log(obj);
+        
+
+        res.json(obj);
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}

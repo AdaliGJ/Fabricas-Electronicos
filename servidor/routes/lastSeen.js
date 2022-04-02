@@ -7,7 +7,7 @@ const lastSeenController = require('../controllers/lastSeenController');
 router.post('/',lastSeenController.crearLastSeen);
 //router.get('/', clienteController.obtenerClientes);
 //router.put('/:id', clienteController.actualizarCliente);
-//router.get('/:id', clienteController.obtenerCliente);
+router.get('/:id', lastSeenController.obtenerReporteria);
 //router.delete('/:id', clienteController.borrarCliente);
 //router.post('/login', clienteController.login);
 

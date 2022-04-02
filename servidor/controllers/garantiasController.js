@@ -1,4 +1,6 @@
 const Garantia = require("../models/Garantia");
+const DispositivosIndividuales = require("../models/DispositivosIndividuales");
+
 
 exports.crearGarantia = async (req, res) => {
     try{
@@ -17,6 +19,21 @@ exports.crearGarantia = async (req, res) => {
 exports.obtenerGarantias = async (req,res)=>{
     try{
         const garantia= await Garantia.find();
+        res.json(garantia);
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+
+exports.obtenerGarantia = async (req,res)=>{
+    try{
+        let garantia= await Garantia.findById(req.params.id);
+        
+        if(!garantia){
+            res.status(404).json({msg: 'No existe la garantia'})
+        }
+        
         res.json(garantia);
     }catch(error){
         console.log(error);
@@ -47,6 +64,47 @@ exports.actualizarGarantia = async (req,res)=>{
 
         res.json(garantia);
 
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+
+exports.verificarGarantia = async (req,res)=>{
+    try{
+
+        const dispsitivo = await DispositivosIndividuales.findOne({serie:req.params.id});
+        const stringIdInventario = dispsitivo.idInventario;
+        let fechaAdquisicion = new Date();
+        fechaAdquisicion = dispsitivo.fechaVentas;
+
+        const garantia = await Garantia.findOne({idInventario:stringIdInventario});
+        const vencimiento = garantia.mesesGarantia;
+
+        console.log(fechaAdquisicion);
+
+        let fechaVencimiento = new Date();
+        fechaVencimiento = fechaAdquisicion.setMonth(fechaAdquisicion.getMonth() + vencimiento);
+
+        let vigenciaFecha = new Date();
+
+
+
+        
+        console.log(fechaVencimiento);
+        console.log(vigenciaFecha);
+
+        let vigencia;
+
+        if(fechaVencimiento < vigenciaFecha){
+            vigencia = {"Garantia":"Expirada"};
+        } else {
+            vigencia = {"Garantia":"Vigente"};
+        }
+        //console.log(stringIdInventario);
+        
+        
+        res.json(vigencia);
     }catch(error){
         console.log(error);
         res.status(500),send("Hubo un error");
