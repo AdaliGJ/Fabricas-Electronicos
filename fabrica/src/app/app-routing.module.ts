@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginClienteComponent } from './components/login-cliente/login-cliente.component';
 import {CatalogoComponent} from './components/catalogo/catalogo.component'
 import { DetallesComponent } from './components/detalles/detalles.component';
+import { DatosExtraComponent } from './components/datos-extra/datos-extra.component';
 
 const localUser=localStorage.getItem("usuario");
 const localClient=localStorage.getItem("cliente");
@@ -40,6 +41,7 @@ else{
     {path: 'editar-usuario/:id', component: CrearUsuarioComponent},
     {path: 'lista-electronicos', component: ListarElectronicosComponent},
     {path: 'lista-usuarios', component: ListarUsuarioComponent},
+    {path: 'datos-extra/:id', component: DatosExtraComponent},
     //{path: 'login-cliente', component: LoginClienteComponent},
     {path:'**', redirectTo: '', pathMatch: 'full'}
   ];
