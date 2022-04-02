@@ -15,7 +15,7 @@
                         <h6>{{electronico._id}}</h6>
                         <h6 class="bg-warning">Q.{{electronico.precio}}.00</h6>
                         <button [routerLink] ="['/detalles', electronico._id]" class="btn  btn-secondary float-start">Datalles</button>
-                        <button  class="btn btn-success btn-dark float-end">Comprar</button>
+                        <button [routerLink] ="['/compra', electronico._id]" class="btn btn-success btn-dark float-end">Comprar</button>
                     </div>
                 </div>
                 
