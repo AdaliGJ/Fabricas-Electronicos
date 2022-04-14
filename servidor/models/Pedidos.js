@@ -21,7 +21,7 @@ const PedidosSchema = mongoose.Schema({
     },
     estado:{
         type: String,
-        required: true
+        default: "generado"
     },
     entrega:{
         type:Number,
@@ -30,7 +30,8 @@ const PedidosSchema = mongoose.Schema({
     fechaEntrega:{
         type:Date,
         required: true
-    }
+    },
+    dispositivos:[{serie:String, _id:false}]
 
 
 })
