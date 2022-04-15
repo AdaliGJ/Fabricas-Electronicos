@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <button class="btn btn-success" (click) ="logout()">logout</button>
+      <div class="row">
+          <div class="col-lg-12 offset-lg-0">
+              <div class="card">
+                  <div class="card-body text-center">
+                      <span>Garantias</span>
+                      <button class="btn btn-success float-end" routerLink="/crear-garantia">Nuevo</button>
+                      <table  class="table table-striped mt-3">
+                          <thead>
+                            <tr>
+                            <th scope="col">id Garantia</th>
+                              <th scope="col">idInventario</th>
+                              <th scope="col">Meses Garantia</th>
+                              <th scope="col">Detalle</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let garantia of listGarantia">
+                              <th scope="row">{{garantia._id}}</th>
+                            
+                              
+                              <td>{{garantia.idInventario}}</td>
+                              <td>{{garantia.mesesGarantia}}</td>
+                              <td>{{garantia.detalle}}</td>
+
+                              <td>
+                                  <button [routerLink] ="['/editar-garantia', garantia._id]" class="btn btn-success">E</button>
+                                  <button (click) ="eliminarGarantia(garantia._id)" class="btn btn-danger">D</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                       <!-- <h5 *ngIf = "listGarantia.length == 0">No hay garantias</h5> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  

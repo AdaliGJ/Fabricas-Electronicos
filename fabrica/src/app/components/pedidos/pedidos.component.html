@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span>Pedidos</span>
+                    <table  class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">idInventario</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Entrega</th>
+                            <th scope="col">Entregado</th>
+
+                        
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let pedidos of listPedido2">
+                            
+                            <td>{{pedidos.fecha}}</td>
+                            <td>{{pedidos.cliente}}</td>
+                            <td>{{pedidos.idInventario}}</td>
+                            <td>{{pedidos.estado}}</td>
+                            <td>{{pedidos.entrega}}</td>
+                            <td>
+                                <button class="btn btn-success" (click)="cambioEstado(pedidos._id)">Entregado</button>
+
+                            </td>
+
+                           
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

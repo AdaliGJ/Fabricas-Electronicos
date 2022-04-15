@@ -18,6 +18,10 @@ import { DetallesComponent } from './components/detalles/detalles.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { CompraComponent } from './components/compra/compra.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { ListarGarantiasComponent } from './components/listar-garantias/listar-garantias.component';
+import { CrearGarantiaComponent } from './components/crear-garantia/crear-garantia.component';
+
 
 
 @NgModule({
@@ -34,7 +38,10 @@ import { ReportesComponent } from './components/reportes/reportes.component';
     DetallesComponent,
     CatalogoComponent,
     CompraComponent,
-    ReportesComponent
+    ReportesComponent,
+    PedidosComponent,
+    ListarGarantiasComponent,
+    CrearGarantiaComponent,
   ],
   imports: [
     BrowserModule,
