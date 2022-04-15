@@ -42,30 +42,37 @@ exports.obtenerPedidos= async (req,res)=>{
     }
 }
 exports.actualizarPedido = async (req,res)=>{
+    
     try{
-        const { cliente, idInventario, estado, cantidad, entrega, fechaEntrega } = req.body;
+        const { entrega } = req.body;
         let pedido = await Pedidos.findById(req.params.id);
 
+        console.log(pedido  );
         if(!pedido){
             res.status(404).json({msg: 'No existe el elemento'})
         }
-        pedido.cliente = cliente;
-        pedido.idInventario = idInventario;
-        pedido.estado = estado;
-        pedido.cantidad = cantidad;
         pedido.entrega = entrega;
-        pedido.fechaEntrega = fechaEntrega;
 
         pedido = await Pedidos.findOneAndUpdate ({ _id:req.params.id}, 
             {
-                cliente:pedido.cliente,
-                idInventario:pedido.idInventario,
-                estado:pedido.estado,
-                cantidad:pedido.cantidad,
-                entrega:pedido.entrega,
-                fechaEntrega:pedido.fechaEntrega
+
+                estado:"entregado"
+
 
             }, {new:true})
+        res.json(pedido);
+
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+exports.obtenerPedido = async (req,res)=>{
+    try{
+        let pedido = await Pedido.findById(req.params.id);
+        if(!pedido){
+            res.status(404).json({msg: 'No existe el pedido'})
+        }
         res.json(pedido);
 
     }catch(error){
