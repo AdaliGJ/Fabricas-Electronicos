@@ -29,7 +29,34 @@ app.use('/api/garantia', require('./routes/garantia'));
 
 
 
+app.set('port', process.env.PORT || 4000);
 
+/*
+const axios = require('axios');
+
+axios.get('http://localhost:8080/Clientes/ObtenerTodos')
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+
+
+const axios = require('axios');
+
+let data =  {
+  nId: 1,
+  nEtado : "entregado",
+  nFecha : Date.now()
+}
+
+axios.post('http://localhost:8080/Pedidos/Estado', data).then(res => {
+  console.log(res);
+}
+)
+*/
 
 app.listen(4000,()=>{
     console.log("Funcionas");

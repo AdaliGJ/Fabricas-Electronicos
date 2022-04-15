@@ -14,6 +14,9 @@ import { DatosExtraComponent } from './components/datos-extra/datos-extra.compon
 
 import { CompraComponent } from './components/compra/compra.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { ListarGarantiasComponent } from './components/listar-garantias/listar-garantias.component';
+import { CrearGarantiaComponent } from './components/crear-garantia/crear-garantia.component';
 
 
 const localUser=localStorage.getItem("usuario");
@@ -52,6 +55,9 @@ else{
     {path: 'detalles/:id', component: DetallesComponent},
     {path: 'compra/:id', component: CompraComponent},
     {path: 'reportes', component: ReportesComponent},
+    {path: 'pedidos', component: PedidosComponent},
+    {path: 'garantias', component: ListarGarantiasComponent},
+    {path: 'crear-garantia', component: CrearGarantiaComponent},
     {path:'**', redirectTo: '', pathMatch: 'full'}
   ];
 }

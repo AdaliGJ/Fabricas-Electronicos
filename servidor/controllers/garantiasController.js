@@ -110,3 +110,18 @@ exports.verificarGarantia = async (req,res)=>{
         res.status(500),send("Hubo un error");
     }
 }
+exports.borrarGarantia = async (req,res)=>{
+    try{
+        let garantia = await Garantia.findById(req.params.id);
+        if(!garantia){
+            res.status(404).json({msg: 'No existe el garantia'})
+        }
+
+        await Garantia.findOneAndRemove({ _id: req.params.id})
+        res.json({msg: "Garantia eliminado con exito"});
+
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
