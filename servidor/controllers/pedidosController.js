@@ -9,29 +9,36 @@ exports.crearPedido = async (req, res) => {
     try{
         let pedido;
 
-        //Creamos nuestro pedido
+        //Creamos nuestro pedido con los datos provenientes de ventas
         pedido = new Pedidos(req.body);
 
+        //Se obtiene el json con la informacion del cliente
         let datosCliente = await Cliente.findById(pedido.cliente);
 
+        //Obtenemos los dias de entrega
         let diasCliente = datosCliente.diasEntrega;
 
+        //Se crea una variable de tipo fecha
         let date = new Date();
-        
         let dias = diasCliente;
 
+        //Se ingresan los dias en el pedido
         pedido.entrega = dias;
 
+        //A la fecha actual se le suman los dias de entrega
         date.setDate(date.getDate() + dias);
 
+        //Se ingresa la fecha en el pedido
         pedido.fechaEntrega = date;
 
         
-
+        //Obtenemos el _id del pedido para ligarlo a los dispositivos generados
         let idPedido = pedido._id.toHexString();
         console.log(idPedido);
+        //Cantidad de dispositivos a generar
         let count = pedido.cantidad;
 
+        //Obtener las caracteristicas del intentario
         const jsonInventario = await Electronico.findById(pedido.idInventario);
         console.log(jsonInventario);
         const jsonCliente = await Clientes.findById(pedido.cliente);

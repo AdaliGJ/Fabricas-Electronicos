@@ -33,6 +33,10 @@ const DispositivosIndividualesShema = mongoose.Schema({
     fechaVentas:{
         type: Date,
         default: Date.now()
+    },
+    devolucionGarantia:{
+        type: String,
+        default:false
     }
 })
 

@@ -10,6 +10,7 @@ router.put('/:id', garantiasController.actualizarGarantia);
 router.get('/:id', garantiasController.obtenerGarantia);
 router.get('/dispositivo/:id', garantiasController.verificarGarantia);
 router.delete('/:id', garantiasController.borrarGarantia);
+router.get('/devolver/:id', garantiasController.verificarGarantia);
 //router.delete('/:id', clienteController.borrarCliente);
 
 module.exports =  router;
