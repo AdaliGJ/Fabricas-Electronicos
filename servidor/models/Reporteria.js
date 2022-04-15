@@ -1,34 +1,26 @@
 const mongoose = require('mongoose');
 
 const ReporteriaSchema = mongoose.Schema({
-    empresa:{
-        type: String,
-        required:true
-    },
-    categoria:{
-        type: String,
-        required: true
-    },
-    marca:{
-        type: String,
-        required: true
-    },
-    modelo: {
-        type: String,
-        default: Date.now()
-    },
-    color: {
-        type: String,
-        default: Date.now()
-    },
-    precioVenta:{
-        type: Number,
-        required: true
-    },
     serie:{
         type: Number,
         required:true,
         uninque: true
+    },
+    empresa:{
+        type: String,
+        required:true
+    },
+    inventario:{
+        type: String,
+        required: true
+    },
+    pedido:{
+        type: String,
+        required: true
+    },
+    precioVenta:{
+        type: Number,
+        required: true
     },
     fechaVentas:{
         type: Date,

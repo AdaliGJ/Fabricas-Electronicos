@@ -38,9 +38,10 @@ exports.crearLastSeen = async (req, res) => {
 
             if(reporte != null){
                 //console.log(reporte._id);
-                let stringId = reporte._id.toHexString();
+                lastSeen.reportes.push(reporte);
+                //let stringId = reporte._id.toHexString();
                 //console.log(stringId);
-                lastSeen.reportes.push({"idReporteria":stringId});
+                //lastSeen.reportes.push({"idReporteria":stringId});
                 //console.log(lastSeen);
             }
         }

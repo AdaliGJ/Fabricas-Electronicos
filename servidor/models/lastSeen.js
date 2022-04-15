@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
+const Reporteria = require("../models/Reporteria");
 
 const LastSeenSchema = mongoose.Schema({
     fechaConsulta:{
         type: Date,
         default: Date.now()
     },
-    reportes:[{idReporteria:String, _id:false}]
+    reportes:[]
 
 })
 
