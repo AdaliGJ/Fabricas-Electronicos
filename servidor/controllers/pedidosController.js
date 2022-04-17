@@ -100,7 +100,7 @@ exports.actualizarPedido = async (req,res)=>{
                 estado:"entregado"
 
 
-            }, {new:true})
+            }, {new:true});
         res.json(pedido);
 
     }catch(error){
@@ -124,7 +124,7 @@ exports.estadoPedido = async (req,res)=>{
         pedido = await Pedidos.findOneAndUpdate ({ _id:idPedidos}, 
             {
                 estado:pedido.estado
-            }, {new:true})
+            }, {new:true});
         res.json(pedido);
 
     }catch(error){

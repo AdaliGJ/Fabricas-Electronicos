@@ -11,6 +11,10 @@ const PedidosSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    idInventarioVentas:{
+        type: Number,
+        required: true
+    },
     cliente:{
         type: String,
         required: true
