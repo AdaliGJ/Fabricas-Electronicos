@@ -9,6 +9,7 @@ import { Pedido } from '../models/pedido';
 export class PedidoService {
 
   url = 'http://localhost:4000/api/pedidos/';
+  url2 = 'http://localhost:4000/api/pedidos/enviar';
   constructor (private http: HttpClient) {
    }
 
@@ -20,5 +21,9 @@ export class PedidoService {
   }
   obtenerPedido(id: string): Observable<any>{
     return this.http.get(this.url + id);
+  }
+
+  postOracle(id: string, estado:String): Observable<any>{
+    return this.http.post(this.url + id, estado);
   }
 }

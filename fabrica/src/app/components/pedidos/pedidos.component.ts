@@ -42,6 +42,12 @@ export class PedidosComponent implements OnInit {
   }
 
   cambioEstado(id:any){
+
+    this._pedidoService.postOracle(id, "entregado").subscribe(data=>{
+      console.log("servicio conectado");
+    }, error => {
+      console.log(error);
+    })  
    
    this._pedidoService.editarPedidoEstado(id, "entregado").subscribe(data=>{
     window.location.reload();
@@ -50,6 +56,7 @@ export class PedidosComponent implements OnInit {
 })
 
   
+
   }
   
 }
