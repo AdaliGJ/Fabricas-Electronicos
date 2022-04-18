@@ -46,16 +46,16 @@ axios.get('http://localhost:8080/Clientes/ObtenerTodos')
 
 const axios = require('axios');
 
-let data =  {
-  nId: 1,
-  nEtado : "entregado",
-  nFecha : Date.now()
-}
+var nId = 1;
+var nEstado = "entregado";
+var nFecha = Date.now();
 
-axios.post('http://localhost:8080/Pedidos/Estado', data).then(res => {
+var stringPost = "http://localhost:8080/Pedidos/Estado?nId="+nId+"&nEstado="+nEstado+"nFecha"+nFecha;
+
+axios.post(stringPost).then(res => {
   console.log(res);
-}
-)
+})
+
 */
 
 app.listen(4000,()=>{
