@@ -7,6 +7,7 @@ export class Pedido{
 	idInventario : Number;
 	estado: String;
 	entrega: Number;
+    cantidad: Number;
 
 
 
@@ -16,7 +17,7 @@ export class Pedido{
         idInventario: Number,
         estado: String,
         entrega : Number,
-
+        cantidad: Number
 
         )
         {
@@ -25,7 +26,7 @@ export class Pedido{
         this.idInventario = idInventario;
         this.estado = estado;
         this.entrega = entrega;
-
+        this.cantidad = cantidad;
         
     }
 
