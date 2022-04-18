@@ -36,15 +36,15 @@ exports.crearPedido = async (req, res) => {
         
         //Obtenemos el _id del pedido para ligarlo a los dispositivos generados
         let idPedido = pedido._id.toHexString();
-        console.log(idPedido);
+        //console.log(idPedido);
         //Cantidad de dispositivos a generar
         let count = pedido.cantidad;
 
         //Obtener las caracteristicas del intentario
         const jsonInventario = await Electronico.findById(pedido.idInventario);
-        console.log(jsonInventario);
+        //console.log(jsonInventario);
         const jsonCliente = await Clientes.findById(pedido.cliente);
-        console.log(jsonCliente);
+        //console.log(jsonCliente);
 
         
         for (var i = 0; i<count; i++){
@@ -62,7 +62,7 @@ exports.crearPedido = async (req, res) => {
 
             
             await dispositivo.save();
-            console.log(dispositivo);
+            //console.log(dispositivo);
             pedido.dispositivos.push({"serie":dispositivo.serie});
 
         }
@@ -165,10 +165,22 @@ exports.estadoPedido = async (req,res)=>{
 
 exports.enviarPedido= async (req,res)=>{
     try{
-        const {id, estado} = req.body;
-        var nId = id;
+        const {idPedido, estado} = req.body;
+
+        //Obtenemos el pedido para obener la informacion
+        let pedido = await Pedidos.findOneAndUpdate({_id:idPedido},{estado:estado});
+        //console.log(pedido);
+
+        var nId = pedido.idPedidoVentas;
+        //console.log(nId);
         var nEstado = estado;
         var nFecha = Date.now();
+
+        //Se obtiene el array de los numeros de serie
+        var dispositivos = pedido.dispositivos;
+        //Se obtiene el tamaño del arreglo
+        var counter = pedido.cantidad;
+        //console.log(dispositivos[1].serie);
 
         /*
         const headers = {
@@ -180,6 +192,19 @@ exports.enviarPedido= async (req,res)=>{
 
         //Se realiza el axios post, el metodo en ventas es un void por lo que solo confirmamos que se realizo el post
         axios.post(stringPost).then(response => {
+
+            //var estadoDispositivo = 3;
+            
+            for( var i = 0; i < counter; i++){
+                var serie = dispositivos[i].serie;
+                
+                //Se hace el insert en ventas con el numero de serie y el id del inventario en ventas
+                var stringPost2 = "http://localhost:8080/Dispositivos_individuales/Insertar?nSerie="+serie+"&nId="+nId;
+                axios.post(stringPost2);
+                //console.log(stringPost2);
+            }
+            
+            
             var respuesta = {"Respuesta":"ok"};
 
             res.json(respuesta);
