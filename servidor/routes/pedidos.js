@@ -10,5 +10,6 @@ router.put('/:id', pedidosController.actualizarPedido);
 router.post('/estado/', pedidosController.estadoPedido);
 //router.get('/:id', pedidosController.obtenerPedido);
 //router.delete('/:id', pedidosController.borrarPedido);
+router.post('/enviar/', pedidosController.enviarPedido);
 
 module.exports =  router;

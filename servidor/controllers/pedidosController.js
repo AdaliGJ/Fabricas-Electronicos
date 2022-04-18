@@ -4,6 +4,8 @@ const Electronico = require("../models/Electronico");
 const Cliente = require("../models/Cliente");
 const DispositivosIndividuales = require("../models/DispositivosIndividuales");
 var generator = require('generate-serial-number');
+let fs = require('fs');
+const axios = require('axios');
 
 exports.crearPedido = async (req, res) => {
     try{
@@ -112,7 +114,8 @@ exports.actualizarPedido = async (req,res)=>{
 
 exports.estadoPedido = async (req,res)=>{
     try{
-        const { idPedidos, estado } = req.body;
+        const { idPedidos, estado,responsable } = req.body;
+        //console.log(req.body);
         let pedido = await Pedidos.findById(idPedidos);
 
         if(!pedido){
@@ -121,12 +124,67 @@ exports.estadoPedido = async (req,res)=>{
         
         pedido.estado = estado;
 
+        if(pedido.estado == "cancelado"){
+            var date = new Date().toLocaleDateString().replace("/", "-").replace("/", "-");
+            var time = new Date();
+            //date.format("%Y-%m-%d-%H:%M:%S");
+            console.log(date);
+            var dateString =  date;
+            console.log(dateString);
+
+            let pedido = await Pedidos.findById(idPedidos);
+            let datosCliente = await Cliente.findById(pedido.cliente); 
+
+            var contenidoLog = 
+                "Se ha cancelado el pedido con el identificador "+idPedidos+"\n"
+                +"La operacion fue realizada por el empleado "+ responsable + " de la empresa " + datosCliente.empresa +  "\n"
+                +"El dia "+dateString+" a la hora "+ time.getHours()+":"+time.getMinutes()+":"+time.getSeconds() ;
+            try {
+                fs.appendFile('logs/'+ dateString +" "+ time.getHours()+"-"+time.getMinutes()+"-"+time.getSeconds()+" "+datosCliente.empresa+' log.txt', contenidoLog ,function (err) {
+                    if (err) throw err;
+                    console.log('Saved!');
+                  });
+                //file written successfully
+              } catch (err) {
+                console.error(err)
+              }
+            //var logFile = fs.writeFile('logs/'+ date +'log.txt', "prueba");
+        }
+
         pedido = await Pedidos.findOneAndUpdate ({ _id:idPedidos}, 
             {
                 estado:pedido.estado
             }, {new:true});
         res.json(pedido);
 
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+
+exports.enviarPedido= async (req,res)=>{
+    try{
+        const {id, estado} = req.body;
+        var nId = id;
+        var nEstado = estado;
+        var nFecha = Date.now();
+
+        /*
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        };*/
+
+        //El metodo trabaja con form data/parametros por lo que se arma el string con los parametros
+        stringPost = "http://localhost:8080/Pedidos/Estado?nId="+nId+"&nEstado="+nEstado+"&nFecha="+nFecha;
+
+        //Se realiza el axios post, el metodo en ventas es un void por lo que solo confirmamos que se realizo el post
+        axios.post(stringPost).then(response => {
+            var respuesta = {"Respuesta":"ok"};
+
+            res.json(respuesta);
+        });;
+        
     }catch(error){
         console.log(error);
         res.status(500),send("Hubo un error");
