@@ -1,0 +1,3 @@
+Se ha cancelado el pedido con el identificador 625be1ed166b818266a63d7d
+La operacion fue realizada por el empleado Juan de la empresa Max
+El dia 17-4-2022 a la hora 16:40:36

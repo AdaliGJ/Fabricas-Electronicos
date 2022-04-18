@@ -4,38 +4,47 @@ const Electronico = require("../models/Electronico");
 const Cliente = require("../models/Cliente");
 const DispositivosIndividuales = require("../models/DispositivosIndividuales");
 var generator = require('generate-serial-number');
+let fs = require('fs');
+const axios = require('axios');
 
 exports.crearPedido = async (req, res) => {
     try{
         let pedido;
 
-        //Creamos nuestro pedido
+        //Creamos nuestro pedido con los datos provenientes de ventas
         pedido = new Pedidos(req.body);
 
+        //Se obtiene el json con la informacion del cliente
         let datosCliente = await Cliente.findById(pedido.cliente);
 
+        //Obtenemos los dias de entrega
         let diasCliente = datosCliente.diasEntrega;
 
+        //Se crea una variable de tipo fecha
         let date = new Date();
-        
         let dias = diasCliente;
 
+        //Se ingresan los dias en el pedido
         pedido.entrega = dias;
 
+        //A la fecha actual se le suman los dias de entrega
         date.setDate(date.getDate() + dias);
 
+        //Se ingresa la fecha en el pedido
         pedido.fechaEntrega = date;
 
         
-
+        //Obtenemos el _id del pedido para ligarlo a los dispositivos generados
         let idPedido = pedido._id.toHexString();
-        console.log(idPedido);
+        //console.log(idPedido);
+        //Cantidad de dispositivos a generar
         let count = pedido.cantidad;
 
+        //Obtener las caracteristicas del intentario
         const jsonInventario = await Electronico.findById(pedido.idInventario);
-        console.log(jsonInventario);
+        //console.log(jsonInventario);
         const jsonCliente = await Clientes.findById(pedido.cliente);
-        console.log(jsonCliente);
+        //console.log(jsonCliente);
 
         
         for (var i = 0; i<count; i++){
@@ -53,7 +62,7 @@ exports.crearPedido = async (req, res) => {
 
             
             await dispositivo.save();
-            console.log(dispositivo);
+            //console.log(dispositivo);
             pedido.dispositivos.push({"serie":dispositivo.serie});
 
         }
@@ -93,7 +102,7 @@ exports.actualizarPedido = async (req,res)=>{
                 estado:"entregado"
 
 
-            }, {new:true})
+            }, {new:true});
         res.json(pedido);
 
     }catch(error){
@@ -105,7 +114,8 @@ exports.actualizarPedido = async (req,res)=>{
 
 exports.estadoPedido = async (req,res)=>{
     try{
-        const { idPedidos, estado } = req.body;
+        const { idPedidos, estado,responsable } = req.body;
+        //console.log(req.body);
         let pedido = await Pedidos.findById(idPedidos);
 
         if(!pedido){
@@ -114,12 +124,92 @@ exports.estadoPedido = async (req,res)=>{
         
         pedido.estado = estado;
 
+        if(pedido.estado == "cancelado"){
+            var date = new Date().toLocaleDateString().replace("/", "-").replace("/", "-");
+            var time = new Date();
+            //date.format("%Y-%m-%d-%H:%M:%S");
+            console.log(date);
+            var dateString =  date;
+            console.log(dateString);
+
+            let pedido = await Pedidos.findById(idPedidos);
+            let datosCliente = await Cliente.findById(pedido.cliente); 
+
+            var contenidoLog = 
+                "Se ha cancelado el pedido con el identificador "+idPedidos+"\n"
+                +"La operacion fue realizada por el empleado "+ responsable + " de la empresa " + datosCliente.empresa +  "\n"
+                +"El dia "+dateString+" a la hora "+ time.getHours()+":"+time.getMinutes()+":"+time.getSeconds() ;
+            try {
+                fs.appendFile('logs/'+ dateString +" "+ time.getHours()+"-"+time.getMinutes()+"-"+time.getSeconds()+" "+datosCliente.empresa+' log.txt', contenidoLog ,function (err) {
+                    if (err) throw err;
+                    console.log('Saved!');
+                  });
+                //file written successfully
+              } catch (err) {
+                console.error(err)
+              }
+            //var logFile = fs.writeFile('logs/'+ date +'log.txt', "prueba");
+        }
+
         pedido = await Pedidos.findOneAndUpdate ({ _id:idPedidos}, 
             {
                 estado:pedido.estado
-            }, {new:true})
+            }, {new:true});
         res.json(pedido);
 
+    }catch(error){
+        console.log(error);
+        res.status(500),send("Hubo un error");
+    }
+}
+
+exports.enviarPedido= async (req,res)=>{
+    try{
+        const {idPedido, estado} = req.body;
+
+        //Obtenemos el pedido para obener la informacion
+        let pedido = await Pedidos.findOneAndUpdate({_id:idPedido},{estado:estado});
+        //console.log(pedido);
+
+        var nId = pedido.idPedidoVentas;
+        //console.log(nId);
+        var nEstado = estado;
+        var nFecha = Date.now();
+
+        //Se obtiene el array de los numeros de serie
+        var dispositivos = pedido.dispositivos;
+        //Se obtiene el tamaño del arreglo
+        var counter = pedido.cantidad;
+        //console.log(dispositivos[1].serie);
+
+        /*
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        };*/
+
+        //El metodo trabaja con form data/parametros por lo que se arma el string con los parametros
+        stringPost = "http://localhost:8080/Pedidos/Estado?nId="+nId+"&nEstado="+nEstado+"&nFecha="+nFecha;
+
+        //Se realiza el axios post, el metodo en ventas es un void por lo que solo confirmamos que se realizo el post
+        axios.post(stringPost).then(response => {
+
+            //var estadoDispositivo = 3;
+            
+            for( var i = 0; i < counter; i++){
+                var serie = dispositivos[i].serie;
+                
+                //Se hace el insert en ventas con el numero de serie y el id del inventario en ventas
+                var stringPost2 = "http://localhost:8080/Dispositivos_individuales/Insertar?nSerie="+serie+"&nId="+nId;
+                axios.post(stringPost2);
+                //console.log(stringPost2);
+            }
+            
+            
+            var respuesta = {"Respuesta":"ok"};
+
+            res.json(respuesta);
+        });;
+        
     }catch(error){
         console.log(error);
         res.status(500),send("Hubo un error");

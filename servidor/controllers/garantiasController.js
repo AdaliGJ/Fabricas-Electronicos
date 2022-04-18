@@ -73,35 +73,61 @@ exports.actualizarGarantia = async (req,res)=>{
 exports.verificarGarantia = async (req,res)=>{
     try{
 
+        //Se trae el registro del dispositivo por medio del numero de serie
         const dispsitivo = await DispositivosIndividuales.findOne({serie:req.params.id});
+        
+        //Se obtiene el object id del inventario
         const stringIdInventario = dispsitivo.idInventario;
+        
+        //Se crea una variable fecha donde se guarda el momento de la adquisicion
         let fechaAdquisicion = new Date();
         fechaAdquisicion = dispsitivo.fechaVentas;
 
+        //Se obtienen los datos de la garantia correspondiente al dispositivo
         const garantia = await Garantia.findOne({idInventario:stringIdInventario});
-        const vencimiento = garantia.mesesGarantia;
-
-        console.log(fechaAdquisicion);
-
-        let fechaVencimiento = new Date();
-        fechaVencimiento = fechaAdquisicion.setMonth(fechaAdquisicion.getMonth() + vencimiento);
-
-        let vigenciaFecha = new Date();
-
-
-
-        
-        console.log(fechaVencimiento);
-        console.log(vigenciaFecha);
 
         let vigencia;
 
-        if(fechaVencimiento < vigenciaFecha){
-            vigencia = {"Garantia":"Expirada"};
-        } else {
-            vigencia = {"Garantia":"Vigente"};
+        if(garantia != null){
+            //Se obtienen los meses de garantia
+            const vencimiento = garantia.mesesGarantia;
+
+            console.log(fechaAdquisicion);
+
+            //Se arma la fecha en vencimiento en base a la fecha de adquisicion
+            let fechaVencimiento = new Date();
+            fechaVencimiento = fechaAdquisicion.setMonth(fechaAdquisicion.getMonth() + vencimiento);
+
+            //Se crea la fecha de hoy
+            let vigenciaFecha = new Date();
+
+
+
+            
+            console.log(fechaVencimiento);
+            console.log(vigenciaFecha);
+
+            
+
+            //Se compara si la fecha de garantia ya expiro
+            if(fechaVencimiento < vigenciaFecha){
+                vigencia = {"Garantia":"Expirada"};
+            } else {
+                const devolucion = await DispositivosIndividuales.findOneAndUpdate({serie:req.params.id},
+                    {
+                        devolucionGarantia:true
+        
+                    }, {new:true});
+
+                vigencia = {"Garantia":"Devuelto","Registro":devolucion};
+
+            }
+            //console.log(stringIdInventario);
+        }else{
+            vigencia = {"Garantia":"No disponible"};
         }
-        //console.log(stringIdInventario);
+
+        
         
         
         res.json(vigencia);

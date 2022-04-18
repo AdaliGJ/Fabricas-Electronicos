@@ -7,6 +7,14 @@ const PedidosSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    idPedidoVentas:{
+        type: Number,
+        required: true
+    },
+    idInventarioVentas:{
+        type: Number,
+        required: true
+    },
     cliente:{
         type: String,
         required: true
