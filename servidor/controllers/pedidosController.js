@@ -114,9 +114,12 @@ exports.actualizarPedido = async (req,res)=>{
 
 exports.estadoPedido = async (req,res)=>{
     try{
-        const { idPedidos, estado,responsable } = req.body;
+        const { idPedidoVentas, cliente, estado, responsable} = req.body;
         //console.log(req.body);
-        let pedido = await Pedidos.findById(idPedidos);
+        let pedido = await Pedidos.findOneAndUpdate({idPedidoVentas:idPedidoVentas,cliente:cliente},{
+            estado:estado
+        }, {new:true});
+        console.log(pedido);
 
         if(!pedido){
             res.status(404).json({msg: 'No existe el elemento'})
@@ -132,11 +135,11 @@ exports.estadoPedido = async (req,res)=>{
             var dateString =  date;
             console.log(dateString);
 
-            let pedido = await Pedidos.findById(idPedidos);
+            //let pedido = await Pedidos.findById(idPedidos);
             let datosCliente = await Cliente.findById(pedido.cliente); 
 
             var contenidoLog = 
-                "Se ha cancelado el pedido con el identificador "+idPedidos+"\n"
+                "Se ha cancelado el pedido con el identificador "+idPedidoVentas+"\n"
                 +"La operacion fue realizada por el empleado "+ responsable + " de la empresa " + datosCliente.empresa +  "\n"
                 +"El dia "+dateString+" a la hora "+ time.getHours()+":"+time.getMinutes()+":"+time.getSeconds() ;
             try {
@@ -151,10 +154,11 @@ exports.estadoPedido = async (req,res)=>{
             //var logFile = fs.writeFile('logs/'+ date +'log.txt', "prueba");
         }
 
+        /*
         pedido = await Pedidos.findOneAndUpdate ({ _id:idPedidos}, 
             {
                 estado:pedido.estado
-            }, {new:true});
+            }, {new:true});*/
         res.json(pedido);
 
     }catch(error){
