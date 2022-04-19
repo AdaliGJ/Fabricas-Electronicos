@@ -176,6 +176,7 @@ exports.enviarPedido= async (req,res)=>{
         //console.log(pedido);
 
         var nId = pedido.idPedidoVentas;
+        var nIdInventario = pedido.idInventarioVentas;
         //console.log(nId);
         var nEstado = estado;
         var nFecha = Date.now();
@@ -203,7 +204,7 @@ exports.enviarPedido= async (req,res)=>{
                 var serie = dispositivos[i].serie;
                 
                 //Se hace el insert en ventas con el numero de serie y el id del inventario en ventas
-                var stringPost2 = "http://localhost:8080/Dispositivos_individuales/Insertar?nSerie="+serie+"&nId="+nId;
+                var stringPost2 = "http://localhost:8080/Dispositivos_individuales/Insertar?nSerie="+serie+"&nId="+nIdInventario;
                 axios.post(stringPost2);
                 //console.log(stringPost2);
             }
