@@ -82,14 +82,6 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <h6>Existencias:</h6>
-                            <input type="text" formControlName="existencia" class="form-control form-control-lg"  placeholder="existencia">
-                            <div class="text-danger"
-                            *ngIf="electronicoForm.get('existencia')?.hasError('required') && electronicoForm.get('existencia')?.touched">
-                                <span>existencia del marca obligatorio</span>
-                            </div>
-                        </div>
-                        <div class="mb-3">
                             <h6>Precio:</h6>
                             <input type="number" formControlName="precio" class="form-control form-control-lg"  placeholder="precio">
                             <div class="text-danger"

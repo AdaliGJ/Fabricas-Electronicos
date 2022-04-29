@@ -45,6 +45,7 @@ else{
     {path: 'crear-electronico', component: CrearElectronicoComponent},
     {path: 'crear-usuario', component: CrearUsuarioComponent},
     {path: 'editar-cliente/:id', component: CrearClienteComponent},
+    {path: 'editar-electronico/:id', component: CrearElectronicoComponent},
     {path: 'editar-usuario/:id', component: CrearUsuarioComponent},
     {path: 'lista-electronicos', component: ListarElectronicosComponent},
     {path: 'lista-usuarios', component: ListarUsuarioComponent},

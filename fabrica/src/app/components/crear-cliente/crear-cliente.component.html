@@ -40,6 +40,20 @@
                             </div>
                         </div>
                         <div class="mb-3">
+                            <input type="text" formControlName="diasEntrega" class="form-control form-control-lg"  placeholder="Dias de entrega">
+                            <div class="text-danger"
+                            *ngIf="clienteForm.get('diasEntrega')?.hasError('required') && clienteForm.get('diasEntrega')?.touched">
+                                <span>Dias obligatorios</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="ip" class="form-control form-control-lg"  placeholder="IP">
+                            <div class="text-danger"
+                            *ngIf="clienteForm.get('ip')?.hasError('required') && clienteForm.get('ip')?.touched">
+                                <span>IP obligatorios</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
                             <input type="text" formControlName="password" class="form-control form-control-lg"  placeholder="Contraseña" type="password">
                             <div class="text-danger"
                             *ngIf="clienteForm.get('password')?.hasError('required') && clienteForm.get('password')?.touched">

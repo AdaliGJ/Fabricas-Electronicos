@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <button class="btn btn-success" (click) ="logout()">logout</button>
     <div class="row">
-        <div class="col-lg-8 offset-lg-2">
+        <div class="col-lg-10 offset-lg-2">
             <div class="card">
                 <div class="card-body text-center">
                     <span>Clientes</span>
@@ -9,23 +9,25 @@
                     <table *ngIf = "listCliente.length > 0" class="table table-striped mt-3">
                         <thead>
                           <tr>
-                            <th scope="col">idEmpresa</th>
                             <th scope="col">Empresa</th>
                             <th scope="col">Encargado</th>
                             <th scope="col">Correo</th>
                             <th scope="col">Telefono</th>
                             <th scope="col">Pais</th>
+                            <th scope="col">Dias entrega</th>
+                            <th scope="col">IP</th>
                             <th scope="col">Accion</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let cliente of listCliente">
-                            <th scope="row">1</th>
                             <td>{{cliente.empresa}}</td>
                             <td>{{cliente.encargado}}</td>
                             <td>{{cliente.correo}}</td>
                             <td>{{cliente.telefono}}</td>
                             <td>{{cliente.pais}}</td>
+                            <td>{{cliente.diasEntrega}}</td>
+                            <td>{{cliente.ip}}</td>
                             <td>
                                 <button [routerLink] ="['/editar-cliente', cliente._id]" class="btn btn-success">E</button>
                                 <button (click) ="eliminarCliente(cliente._id)" class="btn btn-danger">D</button>

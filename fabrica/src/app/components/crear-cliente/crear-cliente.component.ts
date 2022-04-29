@@ -12,7 +12,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class CrearClienteComponent implements OnInit {
 
   clienteForm: FormGroup;
-  titulo = 'Crear Producto';
+  titulo = 'Crear Cliente';
   id: string | null;
 
   constructor(private fb: FormBuilder,
@@ -25,7 +25,9 @@ export class CrearClienteComponent implements OnInit {
       correo: ['', Validators.required],
       telefono: ['', Validators.required],
       pais: ['', Validators.required],
-      password:  ['', Validators.required]
+      password:  ['', Validators.required],
+      diasEntrega: ['', Validators.required],
+      ip: ['', Validators.required]
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
    }
@@ -44,7 +46,9 @@ export class CrearClienteComponent implements OnInit {
       correo: this.clienteForm.get('correo')?.value,
       telefono: this.clienteForm.get('telefono')?.value,
       pais: this.clienteForm.get('pais')?.value,
-      password: this.clienteForm.get('password')?.value
+      password: this.clienteForm.get('password')?.value,
+      diasEntrega: this.clienteForm.get('diasEntrega')?.value,
+      ip: this.clienteForm.get('ip')?.value
     }
 
     if(this.id !== null){
@@ -77,6 +81,8 @@ export class CrearClienteComponent implements OnInit {
             correo: data.correo,
             telefono: data.telefono,
             pais: data.pais,
+            diasEntrega: data.diasEntrega,
+            ip: data.ip
           })
         })
       }
