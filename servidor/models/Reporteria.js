@@ -10,7 +10,11 @@ const ReporteriaSchema = mongoose.Schema({
         type: String,
         required:true
     },
-    inventario:{
+    categoria:{
+        type: String,
+        required:true
+    },
+    modelo:{
         type: String,
         required: true
     },
@@ -25,7 +29,19 @@ const ReporteriaSchema = mongoose.Schema({
     fechaVentas:{
         type: Date,
         default: Date.now()
-    }
+    },
+    idInventario:{
+        type: String,
+        required: true
+    },
+    idCliente:{
+        type: String,
+        required: true
+    },
+    idPedidos:{
+        type: String,
+        required: true
+    },
 })
 
 module.exports = mongoose.model('reporteria', ReporteriaSchema, 'reporteria');

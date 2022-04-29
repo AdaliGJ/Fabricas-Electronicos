@@ -8,8 +8,8 @@
                         <thead>
                           <tr>
                             <th scope="col"># de serie</th>  
+                            <th scope="col">Empresa</th>
                             <th scope="col">Categoria</th>
-                            <th scope="col">Marca</th>
                             <th scope="col">Modelo</th>
                             <th scope="col">Color</th>
                             <th scope="col">Empresa</th>
@@ -22,8 +22,8 @@
                         <tbody>
                           <tr *ngFor="let reporte of listReporte">
                             <td>{{reporte.serie}}</td>
+                            <td>{{reporte.empresa}}</td>
                             <td>{{reporte.categoria}}</td>
-                            <td>{{reporte.marca}}</td>
                             <td>{{reporte.modelo}}</td>
                             <td>{{reporte.color}}</td>
                             <td>{{reporte.empresa}}</td>

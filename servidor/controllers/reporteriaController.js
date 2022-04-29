@@ -14,7 +14,9 @@ exports.crearReporte = async (req, res) => {
         //Creacion del reporte vacio
         reporteria = new Reporteria();
 
-        const jsonDispositivo = await DispositivosIndividuales.findOneAndUpdate({serie:serie},{fechaVentas:Date.now()});
+        let date = new Date();
+
+        const jsonDispositivo = await DispositivosIndividuales.findOneAndUpdate({serie:serie},{fechaVentas:date});
 
         console.log(jsonDispositivo);
         
@@ -24,22 +26,27 @@ exports.crearReporte = async (req, res) => {
         //let stringPrueba = mongoose.Types.ObjectId(strIdInventario.toHexString()).valueOf();
         //console.log(stringPrueba);
 
-        //const jsonInventario = await Electronico.findById(jsonDispositivo.idInventario);
+        reporteria.idInventario = jsonDispositivo.idInventario;
+        const jsonInventario = await Electronico.findById(jsonDispositivo.idInventario);
         //console.log(jsonInventario);
 
         //let strIdPedidos = jsonDispositivo.idPedidos;
-        //const jsonPedidos = await Pedidos.findById(jsonDispositivo.idPedidos);
+        reporteria.idPedidos = jsonDispositivo.idPedidos;
+        const jsonPedidos = await Pedidos.findById(jsonDispositivo.idPedidos);
         //console.log(jsonPedidos);
 
         //let strCliente = jsonPedidos.cliente;
-        //const jsonCliente = await Cliente.findById(jsonDispositivo.idCliente);
+        reporteria.idCliente = jsonDispositivo.idCliente;
+        const jsonCliente = await Cliente.findById(jsonDispositivo.idCliente);
         //console.log(jsonCliente);
 
         reporteria.serie = serie;
         reporteria.precioVenta = precioVenta;
-        reporteria.empresa = jsonDispositivo.idCliente;
-        reporteria.inventario = jsonDispositivo.idInventario;
-        reporteria.pedido = jsonDispositivo.idPedidos;
+        reporteria.categoria = jsonInventario.categoria;
+        reporteria.empresa = jsonCliente.empresa;
+        reporteria.modelo = jsonInventario.modelo;
+        reporteria.pedido = jsonPedidos.idPedidoVentas;
+        reporteria.fechaVentas = date;
         //reporteria.marca = jsonInventario.marca;
         //reporteria.modelo = jsonInventario.modelo;
         //reporteria.color = jsonInventario.color;
