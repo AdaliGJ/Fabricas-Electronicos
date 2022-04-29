@@ -7,7 +7,7 @@
                         <div class="mb-3">
                             <input type="text" formControlName="empresa" class="form-control form-control-lg"  placeholder="Empresa">
                             <div class="text-danger"
-                            *ngIf="clienteForm.get('empresa')?.hasError('required') && clienteForm.get('empresa')?.touched">
+                            *ngIf="clienteForm.get('empresa')?.hasError('required') && clienteForm.get('empresa')?.touched"> 
                                 <span>Nombre de la empresa obligatorio</span>
                             </div>
                         </div>
