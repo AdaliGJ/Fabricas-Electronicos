@@ -10,7 +10,9 @@ exports.crearCliente = async (req, res) => {
             correo: req.body.correo,
             pais: req.body.pais,
             fechaCreacion: req.body.fechaCreacion,
-            diasEntrega: req.body.diasEntrega});
+            diasEntrega: req.body.diasEntrega,
+            ip:req.body.ip
+        });
 
         //Creamos nuestro cliente
         cliente.password = await cliente.hashPassword(req.body.password); 
@@ -34,7 +36,7 @@ exports.obtenerClientes = async (req,res)=>{
 }
 exports.actualizarCliente = async (req,res)=>{
     try{
-        const { empresa, encargado, telefono, correo, pais,diasEntrega } = req.body;
+        const { empresa, encargado, telefono, correo, pais,diasEntrega, ip } = req.body;
         let cliente = await Cliente.findById(req.params.id);
 
         if(!cliente){
@@ -46,6 +48,7 @@ exports.actualizarCliente = async (req,res)=>{
         cliente.correo = correo;
         cliente.pais = pais;
         cliente.diasEntrega = diasEntrega;
+        cliente.ip = ip;
 
         cliente = await Cliente.findOneAndUpdate ({ _id:req.params.id}, cliente, {new:true})
         res.json(cliente);

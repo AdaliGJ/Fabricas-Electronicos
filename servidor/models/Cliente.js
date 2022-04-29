@@ -36,6 +36,10 @@ const ClienteSchema = mongoose.Schema({
     diasEntrega:{
         type: Number,
         default: 5
+    },
+    ip:{
+        type: String,
+        default: "localhost"
     }
 });
 

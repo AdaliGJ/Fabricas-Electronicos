@@ -175,6 +175,11 @@ exports.enviarPedido= async (req,res)=>{
         let pedido = await Pedidos.findOneAndUpdate({_id:idPedido},{estado:estado});
         //console.log(pedido);
 
+        let cliente = await Cliente.findById(pedido.cliente); 
+        console.log(cliente);
+
+
+        var ipVentas = cliente.ip;
         var nId = pedido.idPedidoVentas;
         var nIdInventario = pedido.idInventarioVentas;
         //console.log(nId);
@@ -193,7 +198,8 @@ exports.enviarPedido= async (req,res)=>{
         };*/
 
         //El metodo trabaja con form data/parametros por lo que se arma el string con los parametros
-        stringPost = "http://localhost:8080/Pedidos/Estado?nId="+nId+"&nEstado="+nEstado+"&nFecha="+nFecha;
+        stringPost = "http://"+ipVentas+":8080/Pedidos/Estado?nId="+nId+"&nEstado="+nEstado+"&nFecha="+nFecha;
+        console.log(stringPost);
 
         //Se realiza el axios post, el metodo en ventas es un void por lo que solo confirmamos que se realizo el post
         axios.post(stringPost).then(response => {
@@ -204,7 +210,7 @@ exports.enviarPedido= async (req,res)=>{
                 var serie = dispositivos[i].serie;
                 
                 //Se hace el insert en ventas con el numero de serie y el id del inventario en ventas
-                var stringPost2 = "http://localhost:8080/Dispositivos_individuales/Insertar?nSerie="+serie+"&nId="+nIdInventario;
+                var stringPost2 = "http://"+ipVentas+":8080/Dispositivos_individuales/Insertar?nSerie="+serie+"&nId="+nIdInventario;
                 axios.post(stringPost2);
                 //console.log(stringPost2);
             }
