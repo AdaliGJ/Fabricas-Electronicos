@@ -7,7 +7,7 @@
                         <div class="mb-3">
                             <input type="text" formControlName="usuario" class="form-control form-control-lg"  placeholder="Usuario">
                             <div class="text-danger"
-                            *ngIf="usuarioForm.get('usuario')?.hasError('required') && usuarioForm.get('usuario')?.touched">
+                            *ngIf="usuarioForm.get('usuario')?.hasError('required') && usuarioForm.get('usuario')?.touched"> 
                                 <span>Usuario obligatorio</span>
                             </div>
                         </div>

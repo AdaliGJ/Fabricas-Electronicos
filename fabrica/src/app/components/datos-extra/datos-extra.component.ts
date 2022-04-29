@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { windowToggle } from 'rxjs';
 
 import { Electronico } from 'src/app/models/electronico';
 import { ElectronicoService } from 'src/app/services/electronico.service';
@@ -47,6 +48,7 @@ export class DatosExtraComponent implements OnInit {
     this.esEditar();
   }
 
+  
     esEditar(){
       if(this.id !== null){
         this._ElectronicoService.obtenerElectronico(this.id).subscribe(data=>{
