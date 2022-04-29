@@ -19,7 +19,20 @@ const PedidosSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    empresa:{
+        type: String,
+        required: true
+
+    },
     idInventario:{
+        type: String,
+        required: true
+    },
+    categoria:{
+        type: String,
+        required: true
+    },
+    modelo:{
         type: String,
         required: true
     },

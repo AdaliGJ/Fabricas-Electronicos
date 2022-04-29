@@ -16,6 +16,7 @@ exports.crearPedido = async (req, res) => {
 
         //Se obtiene el json con la informacion del cliente
         let datosCliente = await Cliente.findById(pedido.cliente);
+        pedido.empresa = datosCliente.empresa;
 
         //Obtenemos los dias de entrega
         let diasCliente = datosCliente.diasEntrega;
@@ -43,6 +44,10 @@ exports.crearPedido = async (req, res) => {
         //Obtener las caracteristicas del intentario
         const jsonInventario = await Electronico.findById(pedido.idInventario);
         //console.log(jsonInventario);
+        pedido.categoria = jsonInventario.categoria;
+        pedido.modelo = jsonInventario.modelo;
+
+
         const jsonCliente = await Clientes.findById(pedido.cliente);
         //console.log(jsonCliente);
 
