@@ -114,6 +114,22 @@
                             </div>
                         </div>
                         <div class="mb-3">
+                            <h6>Meses Garantia:</h6>
+                            <input type="text" formControlName="mesesGarantia" class="form-control form-control-lg"  placeholder="mesesGarantia">
+                            <div class="text-danger"
+                            *ngIf="electronicoForm.get('mesesGarantia')?.hasError('required') && electronicoForm.get('mesesGarantia')?.touched">
+                                <span>Meses de garantia obligatorios</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <h6>Detalle:</h6>
+                            <input type="text" formControlName="detalle" class="form-control form-control-lg"  placeholder="detalle">
+                            <div class="text-danger"
+                            *ngIf="electronicoForm.get('detalle')?.hasError('required') && electronicoForm.get('detalle')?.touched">
+                                <span>Detalle obligatorio</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
                             <button routerLink="/lista-electronicos" class="btn btn-secondary btn-lg float-start">Regresar</button>
                             <button type="submit" class="btn btn-success btn-lg float-end">Aceptar</button>
                         </div>

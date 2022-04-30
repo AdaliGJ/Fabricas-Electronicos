@@ -13,6 +13,8 @@ export class ElectronicoVideoGame{
     maximoJugadores: number;
     graficos: string;
     consola: string;
+    mesesGarantia: number;
+    detalle: string;
 
     constructor(
         idInventario : number,
@@ -25,7 +27,9 @@ export class ElectronicoVideoGame{
         descripcion: string,
         maximoJugadores: number,
         graficos: string,
-        consola: string
+        consola: string,
+        mesesGarantia: number,
+        detalle: string
         )
         {
         this.idInventario = idInventario;
@@ -39,6 +43,8 @@ export class ElectronicoVideoGame{
         this.maximoJugadores = maximoJugadores;
         this.graficos = graficos;
         this.consola = consola;
+        this.mesesGarantia = mesesGarantia;
+        this.detalle = detalle;
     }
 
 }

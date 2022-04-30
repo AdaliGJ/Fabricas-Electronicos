@@ -14,6 +14,8 @@ export class ElectronicoTelevisor{
     bits: number;
     pulgadas: number;
     hdmi: number;
+    mesesGarantia: number;
+    detalle: string;
 
     constructor(
         idInventario : number,
@@ -28,6 +30,8 @@ export class ElectronicoTelevisor{
         bits: number,
         pulgadas: number,
         hdmi: number,
+        mesesGarantia: number,
+        detalle: string
         )
         {
         this.idInventario = idInventario;
@@ -42,6 +46,8 @@ export class ElectronicoTelevisor{
         this.bits = bits;
         this.pulgadas = pulgadas;
         this.hdmi = hdmi;
+        this.mesesGarantia = mesesGarantia;
+        this.detalle = detalle;
     }
 
 }

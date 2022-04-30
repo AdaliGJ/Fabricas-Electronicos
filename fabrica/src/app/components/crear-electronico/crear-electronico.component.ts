@@ -43,6 +43,8 @@ export class CrearElectronicoComponent implements OnInit {
       maximoJugadores: ['', Validators.required],
       graficos: ['', Validators.required],
       consola: ['', Validators.required],
+      mesesGarantia: ['', Validators.required],
+      detalle: ['', Validators.required]
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
     this.tipoElectronico = 0;
@@ -79,6 +81,8 @@ export class CrearElectronicoComponent implements OnInit {
       maximoJugadores: this.electronicoForm.get('maximoJugadores')?.value,
       graficos: this.electronicoForm.get('graficos')?.value,
       consola: this.electronicoForm.get('consola')?.value,
+      mesesGarantia: this.electronicoForm.get('mesesGarantia')?.value,
+      detalle: this.electronicoForm.get('detalle')?.value,
     }
     const ELECTRONICOtelevisor: ElectronicoTelevisor ={
       idInventario: 0,
@@ -93,6 +97,8 @@ export class CrearElectronicoComponent implements OnInit {
       bits: this.electronicoForm.get('bits')?.value,
       pulgadas: this.electronicoForm.get('pulgadas')?.value,
       hdmi: this.electronicoForm.get('hdmi')?.value,
+      mesesGarantia: this.electronicoForm.get('mesesGarantia')?.value,
+      detalle: this.electronicoForm.get('detalle')?.value,
     }
 
     const ELECTRONICOsmartWatch: ElectronicoSmartWatch ={
@@ -108,6 +114,8 @@ export class CrearElectronicoComponent implements OnInit {
       sistemaOperativo: this.electronicoForm.get('sistemaOperativo')?.value,
       ram: this.electronicoForm.get('ram')?.value,
       memoria: this.electronicoForm.get('memoria')?.value,
+      mesesGarantia: this.electronicoForm.get('mesesGarantia')?.value,
+      detalle: this.electronicoForm.get('detalle')?.value,
     }
 
     const ELECTRONICOVideoGame: ElectronicoVideoGame ={
@@ -122,6 +130,8 @@ export class CrearElectronicoComponent implements OnInit {
       maximoJugadores: this.electronicoForm.get('maximoJugadores')?.value,
       graficos: this.electronicoForm.get('graficos')?.value,
       consola: this.electronicoForm.get('consola')?.value,
+      mesesGarantia: this.electronicoForm.get('mesesGarantia')?.value,
+      detalle: this.electronicoForm.get('detalle')?.value,
       
     }
 
@@ -228,6 +238,8 @@ export class CrearElectronicoComponent implements OnInit {
             maximoJugadores: "",
             graficos: "",
             consola: "",
+            mesesGarantia: "",
+            detalle: "",
           })
         })
       }

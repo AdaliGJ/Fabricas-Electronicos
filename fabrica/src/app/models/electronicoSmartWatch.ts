@@ -14,6 +14,8 @@ export class ElectronicoSmartWatch{
     sistemaOperativo: string;
     ram: number;
     memoria: number;
+    mesesGarantia: number;
+    detalle: string;
 
     constructor(
         idInventario : number,
@@ -28,6 +30,8 @@ export class ElectronicoSmartWatch{
         sistemaOperativo: string,
         ram: number,
         memoria: number,
+        mesesGarantia: number,
+        detalle: string
         )
         {
         this.idInventario = idInventario;
@@ -42,6 +46,8 @@ export class ElectronicoSmartWatch{
         this.sistemaOperativo = sistemaOperativo;
         this.ram = ram;
         this.memoria = memoria; 
+        this.mesesGarantia = mesesGarantia;
+        this.detalle = detalle;
     }
 
 }
