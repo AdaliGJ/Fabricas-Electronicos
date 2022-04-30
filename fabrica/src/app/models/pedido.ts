@@ -8,6 +8,10 @@ export class Pedido{
 	estado: String;
 	entrega: Number;
     cantidad: Number;
+    empresa: string;
+    idPedidoVentas: number;
+    categoria: string;
+    modelo: string;
 
 
 
@@ -17,8 +21,11 @@ export class Pedido{
         idInventario: Number,
         estado: String,
         entrega : Number,
-        cantidad: Number
-
+        cantidad: Number,
+        empresa: string,
+        idPedidoVentas: number,
+        categoria: string,
+        modelo: string
         )
         {
         this.fecha = fecha;
@@ -27,7 +34,10 @@ export class Pedido{
         this.estado = estado;
         this.entrega = entrega;
         this.cantidad = cantidad;
-        
+        this.empresa = empresa;
+        this.idPedidoVentas = idPedidoVentas;
+        this.categoria = categoria;
+        this.modelo = modelo;
     }
 
 }

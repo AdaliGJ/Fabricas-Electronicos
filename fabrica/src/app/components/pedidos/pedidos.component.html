@@ -7,14 +7,16 @@
                     <table  class="table table-striped mt-3">
                         <thead>
                           <tr>
-                            <th scope="col">ID pedido</th>
+                            <th scope="col">Empresa</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Modelo</th>
                             <th scope="col">Cantidad</th>
                             <th scope="col">Fecha</th>
-                            <th scope="col">Cliente</th>
-                            <th scope="col">idInventario</th>
-                            <th scope="col">Estado</th>
+                            <th scope="col">idPedidoVentas</th>
+                            
                             <th scope="col">Entrega</th>
                             <th scope="col">Entregado</th>
+                            <th scope="col">Estado</th>
 
                         
                           </tr>
@@ -22,13 +24,15 @@
                         <tbody>
                           <tr *ngFor="let pedidos of listPedido2">
                             
-                            <td>{{pedidos._id}}</td>
+                            <td>{{pedidos.empresa}}</td>
+                            <td>{{pedidos.categoria}}</td>
+                            <td>{{pedidos.modelo}}</td>
                             <td>{{pedidos.cantidad}}</td>
                             <td>{{pedidos.fecha}}</td>
-                            <td>{{pedidos.cliente}}</td>
-                            <td>{{pedidos.idInventario}}</td>
-                            <td>{{pedidos.estado}}</td>
+                            <td>{{pedidos.idPedidoVentas}}</td>
+                            
                             <td>{{pedidos.entrega}}</td>
+                            <td>{{pedidos.estado}}</td>
                             <td>
                                 <button class="btn btn-success" (click)="cambioEstado(pedidos._id)">Entregado</button>
 
