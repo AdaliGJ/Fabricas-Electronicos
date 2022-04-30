@@ -4,12 +4,26 @@ const ElectronicoTelevisor = require("../models/ElectronicoTelevisor");
 const ElectronicoSmartWatch = require("../models/ElectronicoSmartWatch");
 const ElectronicoVideoGame = require("../models/ElectronicoVideoGame");
 
+const Garantia = require("../models/Garantia");
+
 exports.crearElectronico = async (req, res) => {
     try{
         let electronico;
+        console.log(req.body);
         //Creamos nuestro electronico
         electronico = new Electronico(req.body);
         await electronico.save();
+
+        let idInventario = electronico._id.toHexString();
+        let garantia;
+
+        //Creamos nuestra garantia
+        garantia = new Garantia();
+        garantia.idInventario = idInventario;
+        garantia.mesesGarantia = (req.body.mesesGarantia);
+        garantia.detalle = (req.body.detalle);
+        await garantia.save();
+
         res.send(electronico);
     }catch(error){
         console.log(error);
@@ -22,6 +36,18 @@ exports.crearElectronicoTelevisor = async (req, res) => {
         //Creamos nuestro electronico
         electronico = new ElectronicoTelevisor(req.body);
         await electronico.save();
+
+        let idInventario = electronico._id.toHexString();
+        let garantia;
+
+        //Creamos nuestra garantia
+        garantia = new Garantia();
+        garantia.idInventario = idInventario;
+        garantia.mesesGarantia = (req.body.mesesGarantia);
+        garantia.detalle = (req.body.detalle);
+        await garantia.save();
+
+
         res.send(electronico);
     }catch(error){
         console.log(error);
@@ -34,6 +60,17 @@ exports.crearElectronicoSmartWatch = async (req, res) => {
         //Creamos nuestro electronico
         electronico = new ElectronicoSmartWatch(req.body);
         await electronico.save();
+
+        let idInventario = electronico._id.toHexString();
+        let garantia;
+
+        //Creamos nuestra garantia
+        garantia = new Garantia();
+        garantia.idInventario = idInventario;
+        garantia.mesesGarantia = (req.body.mesesGarantia);
+        garantia.detalle = (req.body.detalle);
+        await garantia.save();
+
         res.send(electronico);
     }catch(error){
         console.log(error);
@@ -46,6 +83,18 @@ exports.crearElectronicoVideoGame = async (req, res) => {
         //Creamos nuestro electronico
         electronico = new ElectronicoVideoGame(req.body);
         await electronico.save();
+
+        let idInventario = electronico._id.toHexString();
+        let garantia;
+
+        //Creamos nuestra garantia
+        garantia = new Garantia();
+        garantia.idInventario = idInventario;
+        garantia.mesesGarantia = (req.body.mesesGarantia);
+        garantia.detalle = (req.body.detalle);
+        await garantia.save();
+
+
         res.send(electronico);
     }catch(error){
         console.log(error);
