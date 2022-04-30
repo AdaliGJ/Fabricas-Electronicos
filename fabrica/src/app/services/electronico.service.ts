@@ -14,6 +14,7 @@ export class ElectronicoService {
   url = 'http://localhost:4000/api/electronico/';
   urlTelevisor = 'http://localhost:4000/api/electronicoTelevisor/';
   urlSmartWatch = 'http://localhost:4000/api/electronicoSmartWatch/';
+  urlVideoGame = 'http://localhost:4000/api/electronicoVideoGame/';
   constructor (private http: HttpClient) {
    }
 
@@ -34,7 +35,7 @@ export class ElectronicoService {
     return this.http.post(this.urlSmartWatch, electronicoSmartWatch);
   }
   nuevoElectronicoVideoGame(electronicoVideoGame: ElectronicoVideoGame): Observable<any>{
-    return this.http.post(this.url, electronicoVideoGame);
+    return this.http.post(this.urlVideoGame, electronicoVideoGame);
   }
   obtenerElectronico(id: string): Observable<any>{
     return this.http.get(this.url + id);
