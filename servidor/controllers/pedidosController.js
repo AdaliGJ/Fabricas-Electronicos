@@ -13,9 +13,11 @@ exports.crearPedido = async (req, res) => {
 
         //Creamos nuestro pedido con los datos provenientes de ventas
         pedido = new Pedidos(req.body);
+        console.log(pedido);
 
         //Se obtiene el json con la informacion del cliente
         let datosCliente = await Cliente.findById(pedido.cliente);
+        console.log(datosCliente);
         pedido.empresa = datosCliente.empresa;
 
         //Obtenemos los dias de entrega
@@ -206,6 +208,8 @@ exports.enviarPedido= async (req,res)=>{
         stringPost = "http://"+ipVentas+":8080/Pedidos/Estado?nId="+nId+"&nEstado="+nEstado+"&nFecha="+nFecha;
         console.log(stringPost);
 
+        let boolGarantia = pedido.pedidoGarantia;
+
         //Se realiza el axios post, el metodo en ventas es un void por lo que solo confirmamos que se realizo el post
         axios.post(stringPost).then(response => {
 
@@ -214,10 +218,18 @@ exports.enviarPedido= async (req,res)=>{
             for( var i = 0; i < counter; i++){
                 var serie = dispositivos[i].serie;
                 
-                //Se hace el insert en ventas con el numero de serie y el id del inventario en ventas
-                var stringPost2 = "http://"+ipVentas+":8080/Dispositivos_individuales/Insertar?nSerie="+serie+"&nId="+nIdInventario;
-                axios.post(stringPost2);
-                //console.log(stringPost2);
+                if(boolGarantia == true){
+                    //Se hace el insert en ventas con el numero de serie y el id del inventario en ventas y se ingresa como vendido
+                    var stringPostGarantia = "http://"+ipVentas+":8080/Dispositivos_individuales/Prueba?nSerie="+serie+"&nId="+nIdInventario+"&nVendido=1";
+                    axios.post(stringPostGarantia);
+                    //console.log(stringPost2);
+                }else{
+                    //Se hace el insert en ventas con el numero de serie y el id del inventario en ventas
+                    var stringPost2 = "http://"+ipVentas+":8080/Dispositivos_individuales/Insertar?nSerie="+serie+"&nId="+nIdInventario;
+                    axios.post(stringPost2);
+                    //console.log(stringPost2);
+                }
+                
             }
             
             

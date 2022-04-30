@@ -1,0 +1,3 @@
+Se ha cancelado el pedido con el identificador 41
+La operacion fue realizada por el empleado 1 de la empresa El duende
+El dia 29-4-2022 a la hora 21:58:24
