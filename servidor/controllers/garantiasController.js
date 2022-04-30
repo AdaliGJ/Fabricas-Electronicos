@@ -1,5 +1,7 @@
 const Garantia = require("../models/Garantia");
 const DispositivosIndividuales = require("../models/DispositivosIndividuales");
+const Pedidos = require("../models/Pedidos");
+const Cliente = require("../models/Cliente");
 
 
 exports.crearGarantia = async (req, res) => {
@@ -101,13 +103,10 @@ exports.verificarGarantia = async (req,res)=>{
             //Se crea la fecha de hoy
             let vigenciaFecha = new Date();
 
-
-
             
             console.log(fechaVencimiento);
             console.log(vigenciaFecha);
 
-            
 
             //Se compara si la fecha de garantia ya expiro
             if(fechaVencimiento < vigenciaFecha){
@@ -119,7 +118,16 @@ exports.verificarGarantia = async (req,res)=>{
         
                     }, {new:true});
 
-                vigencia = {"Garantia":"Devuelto","Registro":devolucion};
+                let idPedidoAnterior = devolucion.idPedidos;
+                const infoPedido = await Pedidos.findById(idPedidoAnterior);
+                let cliente = await Cliente.findById(infoPedido.cliente);
+
+                
+
+                vigencia = {"Garantia":"Devuelto",
+                //"Registro":devolucion,
+                "Pedido":infoPedido,
+                "ip":cliente.ip};
 
             }
             //console.log(stringIdInventario);

@@ -52,6 +52,10 @@ const PedidosSchema = mongoose.Schema({
         type:Date,
         required: true
     },
+    pedidoGarantia:{
+        type:Boolean,
+        default: false
+    },
     dispositivos:[{serie:String, _id:false}]
 
 
